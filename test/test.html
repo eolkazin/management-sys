@@ -3,130 +3,113 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Gestão de Finanças</title>
-    <link rel="stylesheet" href="test.css" />
+    <title>Estoque - Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>
-      <div class="logo">Gestão de Finanças</div>
-      <nav>
-        <ul>
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Transações</a></li>
-          <li><a href="#">Relatórios</a></li>
-          <li><a href="#">Configurações</a></li>
-        </ul>
-      </nav>
-    </header>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>Estoque</h2>
+      <ul>
+        <li>
+          <a href="#"><i class="fas fa-box"></i> Dashboard</a>
+        </li>
+        <li>
+          <a href="#"><i class="fas fa-cogs"></i> Configurações</a>
+        </li>
+        <li>
+          <a href="#"><i class="fas fa-truck"></i> Entradas</a>
+        </li>
+        <li>
+          <a href="#"><i class="fas fa-exchange-alt"></i> Saídas</a>
+        </li>
+        <li>
+          <a href="#"><i class="fas fa-boxes"></i> Produtos</a>
+        </li>
+        <li>
+          <a href="#"><i class="fas fa-users"></i> Fornecedores</a>
+        </li>
+      </ul>
+      <button class="btn"><i class="fas fa-sign-out-alt"></i> Sair</button>
+    </div>
 
-    <main>
-      <!-- Modal Resumo Financeiro -->
-      <section class="dashboard">
-        <h1>Resumo Financeiro</h1>
-        <div class="cards">
-          <div class="card receitas">
-            <h3>Receitas</h3>
-            <p class="amount">R$ 12.500,00</p>
-          </div>
-          <div class="card despesas">
-            <h3>Despesas</h3>
-            <p class="amount">R$ 7.800,00</p>
-          </div>
-          <div class="card lucro">
-            <h3>Lucro</h3>
-            <p class="amount">R$ 4.700,00</p>
-          </div>
-        </div>
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Header -->
+      <header>
+        <h1><i class="fas fa-warehouse"></i> Controle de Estoque</h1>
+        <button class="btn"><i class="fas fa-plus"></i> Novo Produto</button>
+      </header>
+
+      <!-- Seções de Conteúdo -->
+      <section class="content-section">
+        <h2><i class="fas fa-box"></i> Cadastro de Produtos</h2>
+        <form>
+          <input type="text" placeholder="Nome do Produto" required />
+          <textarea placeholder="Descrição do Produto" required></textarea>
+          <input type="text" placeholder="Categoria" required />
+          <input type="text" placeholder="Fornecedor" required />
+          <input type="number" placeholder="Custo Unitário" required />
+          <input type="number" placeholder="Preço de Venda" required />
+          <input type="number" placeholder="Quantidade em Estoque" required />
+          <input type="text" placeholder="Localização no Armazém" required />
+          <input type="date" placeholder="Data de Validade" />
+          <input type="file" placeholder="Imagem do Produto" />
+          <button type="submit">
+            <i class="fas fa-save"></i> Salvar Produto
+          </button>
+        </form>
       </section>
 
-      <!-- Modal Últimas Transações -->
-      <section class="transacoes">
-        <h2>Últimas Transações</h2>
+      <!-- Tabela de Estoque -->
+      <section class="content-section stock-list">
+        <h2><i class="fas fa-list"></i> Lista de Produtos</h2>
         <table>
           <thead>
             <tr>
-              <th>Data</th>
-              <th>Descrição</th>
-              <th>Valor</th>
-              <th>Tipo</th>
+              <th>ID</th>
+              <th>Produto</th>
+              <th>Custo</th>
+              <th>Preço</th>
+              <th>Quantidade</th>
+              <th>Localização</th>
+              <th>Ações</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>25/04/2025</td>
-              <td>Venda de produto X</td>
-              <td class="positive">R$ 500,00</td>
-              <td class="receita">Receita</td>
+              <td>001</td>
+              <td>Produto Exemplo 1</td>
+              <td>R$ 20,00</td>
+              <td>R$ 30,00</td>
+              <td>50</td>
+              <td>Prateleira 1</td>
+              <td>
+                <button class="btn-delete">
+                  <i class="fas fa-trash-alt"></i> Excluir
+                </button>
+              </td>
             </tr>
             <tr>
-              <td>24/04/2025</td>
-              <td>Pagamento fornecedor Y</td>
-              <td class="negative">R$ 1.200,00</td>
-              <td class="despesa">Despesa</td>
-            </tr>
-            <tr>
-              <td>23/04/2025</td>
-              <td>Venda de serviço Z</td>
-              <td class="positive">R$ 1.800,00</td>
-              <td class="receita">Receita</td>
+              <td>002</td>
+              <td>Produto Exemplo 2</td>
+              <td>R$ 15,00</td>
+              <td>R$ 25,00</td>
+              <td>20</td>
+              <td>Prateleira 2</td>
+              <td>
+                <button class="btn-delete">
+                  <i class="fas fa-trash-alt"></i> Excluir
+                </button>
+              </td>
             </tr>
           </tbody>
         </table>
       </section>
-
-      <!-- Modal Contas -->
-      <section class="contas">
-        <h2>Contas a Pagar e a Receber</h2>
-        <div class="contas-list">
-          <div class="conta pagar">
-            <h4>Conta a Pagar</h4>
-            <p class="conta-valor">R$ 1.000,00</p>
-          </div>
-          <div class="conta receber">
-            <h4>Conta a Receber</h4>
-            <p class="conta-valor">R$ 2.500,00</p>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <p>&copy; 2025 Gestão de Finanças. Todos os direitos reservados.</p>
-    </footer>
-
-    <!-- Modais -->
-    <div class="modal" id="modalResumoFinanceiro">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal('modalResumoFinanceiro')"
-          >&times;</span
-        >
-        <h2>Resumo Financeiro Completo</h2>
-        <p>Detalhes das receitas, despesas e lucros aqui...</p>
-      </div>
     </div>
-
-    <div class="modal" id="modalTransacoes">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal('modalTransacoes')"
-          >&times;</span
-        >
-        <h2>Transações Detalhadas</h2>
-        <p>Detalhes das transações recentes aqui...</p>
-      </div>
-    </div>
-
-    <div class="modal" id="modalContas">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal('modalContas')">&times;</span>
-        <h2>Contas a Pagar e a Receber</h2>
-        <p>Detalhes das contas a pagar e a receber aqui...</p>
-      </div>
-    </div>
-
-    <script>
-      function closeModal(modalId) {
-        document.getElementById(modalId).style.display = "none";
-      }
-    </script>
   </body>
 </html>
