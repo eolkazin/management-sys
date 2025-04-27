@@ -4,28 +4,33 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Responsividade para dispositivos móveis -->
     <title>Nome do Sistema</title>
-    <!-- Link para o seu arquivo CSS estático -->
+    <!-- Link para o arquivo CSS personalizado -->
     <link rel="stylesheet" href="{% static 'css/hub/t_hub.css' %}" />
+    <!-- Link para a biblioteca de ícones Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
   </head>
   <body>
+    <!-- Cabeçalho do sistema com título e saudação ao usuário -->
     <header class="header">
       <div class="header-title">
         <i class="fas fa-cogs"></i> Nome do Sistema
       </div>
       <div class="header-user">
-        <div class="header-user">
-          <i class="fas fa-user"></i> Bem-vindo, {{ usuario.username }}!
-        </div>
+        <i class="fas fa-user"></i> Bem-vindo, {{ usuario.username }}!
+        <!-- Saudação com o nome do usuário -->
       </div>
     </header>
 
+    <!-- Corpo principal da página com os links do menu -->
     <main class="main">
       <section class="menu-grid">
+        <!-- Links de navegação para diferentes funcionalidades do sistema -->
         <a href="#" class="menu-item">
           <i class="fas fa-dollar-sign"></i>
           <span>Finanças</span>
@@ -53,6 +58,7 @@
       </section>
     </main>
 
+    <!-- Rodapé da página com a informação de copyright -->
     <footer class="footer">
       <p>© 2025 - Sistema de Gestão</p>
     </footer>

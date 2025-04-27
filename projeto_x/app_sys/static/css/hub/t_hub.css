@@ -90,7 +90,8 @@ body {
   padding: 2rem;
   border-radius: 15px;
   text-decoration: none;
-  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease,
+    box-shadow 0.3s ease;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   text-align: center;
   height: 200px;

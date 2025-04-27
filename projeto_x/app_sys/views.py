@@ -4,9 +4,8 @@ from django.contrib.auth.hashers import make_password
 from django.contrib import messages
 from django.contrib.auth.hashers import check_password
 
+
 ### Exibe a página de login e valida as credenciais ###
-
-
 def login_view(request):
     if request.method == "POST":
         username = request.POST["username"]
@@ -15,12 +14,15 @@ def login_view(request):
         try:
             usuario = Usuario.objects.get(username=username)
             if check_password(password, usuario.password):
+                # Senha correta, cria a sessão do usuário
                 request.session["usuario_id"] = usuario.id
                 return redirect("hub")
             else:
+                # Senha incorreta
                 messages.error(request, "Usuário ou senha inválidos.")
                 return redirect("login")
         except Usuario.DoesNotExist:
+            # Usuário não encontrado
             messages.error(request, "Usuário ou senha inválidos.")
             return redirect("login")
 
@@ -53,6 +55,7 @@ def cadastro_view(request):
     return render(request, "cadastro.html")
 
 
+### Exibe a página do hub para o usuário logado ###
 def hub_view(request):
     # Verifica se o usuário está logado
     usuario_id = request.session.get("usuario_id")

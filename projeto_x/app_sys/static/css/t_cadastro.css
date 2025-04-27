@@ -8,7 +8,7 @@
 /* Estilos gerais do corpo da página */
 body {
   font-family: "Arial", sans-serif;
-  background-color: #000000; /* Fundo totalmente preto */
+  background-color: #000000; /* Fundo preto */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,16 +17,14 @@ body {
   animation: backgroundAnimation 10s ease-in-out infinite;
 }
 
-/* Animação para a mudança de gradiente de fundo (alterada para preto) */
+/* Animação de fundo */
 @keyframes backgroundAnimation {
-  0% {
-    background: #000000; /* Fundo preto */
+  0%,
+  100% {
+    background: #000000;
   }
   50% {
-    background: #000000; /* Fundo preto */
-  }
-  100% {
-    background: #000000; /* Fundo preto */
+    background: #000000;
   }
 }
 
@@ -36,16 +34,16 @@ body {
     135deg,
     rgba(0, 0, 0, 0.8),
     rgba(0, 0, 0, 0.7)
-  ); /* Gradiente suave */
+  ); /* Gradiente */
   padding: 40px;
   border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); /* Sombra mais intensa */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); /* Sombra */
   width: 100%;
   max-width: 450px;
-  backdrop-filter: blur(10px); /* Desfoque no fundo */
+  backdrop-filter: blur(10px); /* Desfoque */
   transform: scale(0.95);
   animation: popIn 0.5s ease-out forwards;
-  border: 2px solid transparent; /* Tornar a borda invisível */
+  border: 2px solid transparent; /* Borda invisível */
   box-shadow: 0 0 15px rgba(255, 71, 71, 0.7); /* Borda luminosa vermelha */
 }
 
@@ -94,18 +92,17 @@ input {
   border: none;
   border-radius: 5px;
   font-size: 16px;
-  background-color: #333; /* Cor de fundo do input */
-  color: #ff4747; /* Cor do texto do input (vermelho) */
-  transition: background-color 0.3s ease, border-color 0.3s ease,
-    transform 0.2s ease;
+  background-color: #333; /* Fundo escuro */
+  color: #ff4747; /* Texto vermelho */
+  transition: background-color 0.3s, border-color 0.3s, transform 0.2s;
 }
 
-/* Efeito ao focar no campo de entrada */
+/* Efeito de foco no campo de entrada */
 input:focus {
   outline: none;
-  background-color: #444; /* Cor de fundo um pouco mais clara ao focar */
-  border: 2px solid #ff4747; /* Cor da borda ao focar */
-  color: #ff4747; /* Mantém a cor do texto vermelha */
+  background-color: #444; /* Fundo mais claro */
+  border: 2px solid #ff4747; /* Borda vermelha */
+  color: #ff4747;
   transform: scale(1.05);
 }
 
@@ -113,24 +110,23 @@ input:focus {
 button {
   width: 100%;
   padding: 14px;
-  background-color: #ff4747; /* Cor de fundo do botão */
+  background-color: #ff4747; /* Fundo vermelho */
   color: white;
   border: none;
   border-radius: 5px;
   font-size: 18px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease,
-    box-shadow 0.3s ease;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
 }
 
-/* Efeito ao passar o mouse sobre o botão */
+/* Efeito no hover do botão */
 button:hover {
-  background-color: #cc0000; /* Cor vermelha mais intensa no hover */
+  background-color: #cc0000; /* Cor mais intensa */
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Efeito quando o botão é pressionado */
+/* Efeito no pressionamento do botão */
 button:active {
   transform: translateY(0);
 }
@@ -146,7 +142,7 @@ a {
   color: #ff4747; /* Cor do link */
   text-decoration: none;
   font-weight: bold;
-  transition: color 0.3s ease;
+  transition: color 0.3s;
 }
 
 /* Efeito ao passar o mouse sobre o link */
@@ -157,17 +153,17 @@ a:hover {
 
 /* Estilos para as mensagens de erro/sucesso */
 .alert {
-  background-color: #ff4747; /* Cor de fundo vermelho para erros */
-  color: white; /* Cor do texto branco */
+  background-color: #ff4747; /* Cor de fundo vermelho */
+  color: white;
   padding: 15px;
   margin-bottom: 20px;
   border-radius: 5px;
   font-size: 16px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
-  animation: popupAnimation 0.5s ease-out forwards; /* Animação de popup */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  animation: popupAnimation 0.5s ease-out forwards;
 }
 
-/* Animação para o efeito de popup */
+/* Animação de popup */
 @keyframes popupAnimation {
   from {
     transform: scale(0.8);
@@ -179,17 +175,15 @@ a:hover {
   }
 }
 
-/* Estilo para mensagens de sucesso */
+/* Estilos para mensagens de sucesso, aviso e erro */
 .alert.alert-success {
-  background-color: #28a745; /* Cor verde para sucesso */
+  background-color: #28a745; /* Cor verde */
 }
 
-/* Estilo para mensagens de aviso */
 .alert.alert-warning {
-  background-color: #ffc107; /* Cor amarela para avisos */
+  background-color: #ffc107; /* Cor amarela */
 }
 
-/* Estilo para mensagens de erro */
 .alert.alert-danger {
-  background-color: #ff4747; /* Cor vermelha para erros */
+  background-color: #ff4747; /* Cor vermelha */
 }

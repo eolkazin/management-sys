@@ -2,9 +2,11 @@
 <html lang="pt-br">
   <head>
     {% load static %}
+    <!-- Carrega a tag estática do Django, permitindo usar arquivos estáticos como CSS, JS, imagens, etc. -->
 
     <meta charset="UTF-8" />
     <title>Login</title>
+    <!-- Título da página exibido na aba do navegador -->
 
     <!-- Link para o arquivo de estilos CSS do login -->
     <link rel="stylesheet" href="{% static 'css/t_login.css' %}" />
@@ -22,6 +24,7 @@
 
       <!-- Bloco para exibir mensagens de erro ou sucesso -->
       {% for message in messages %}
+      <!-- Loop para exibir todas as mensagens -->
       <div class="alert alert-{{ message.tags }}">{{ message }}</div>
       {% endfor %}
       <!-- O loop exibe qualquer mensagem de erro ou sucesso, com o estilo adequado -->
@@ -29,17 +32,22 @@
       <!-- Formulário de login -->
       <form method="POST">
         {% csrf_token %}
+        <!-- Token CSRF para proteção contra ataques de falsificação de requisições -->
 
         <!-- Campo de entrada para o nome de usuário -->
         <div class="input-container">
           <i class="fas fa-user"></i>
+          <!-- Ícone de usuário -->
           <input type="text" name="username" placeholder="Usuário" required />
+          <!-- Campo de texto para o nome de usuário -->
         </div>
 
         <!-- Campo de entrada para a senha -->
         <div class="input-container">
           <i class="fas fa-lock"></i>
+          <!-- Ícone de senha -->
           <input type="password" name="password" placeholder="Senha" required />
+          <!-- Campo de senha -->
         </div>
 
         <!-- Botão de submissão do formulário -->
@@ -48,6 +56,7 @@
 
       <!-- Link para redirecionar o usuário à página de cadastro, caso não tenha conta -->
       <p>Não tem conta? <a href="{% url 'cadastro' %}">Cadastre-se</a></p>
+      <!-- Link para a página de cadastro -->
     </div>
   </body>
 </html>

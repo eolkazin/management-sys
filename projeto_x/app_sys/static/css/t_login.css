@@ -8,7 +8,7 @@
 /* Estilos gerais do corpo da página */
 body {
   font-family: "Arial", sans-serif;
-  background-color: #000000; /* Fundo totalmente preto */
+  background-color: #000000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,39 +17,29 @@ body {
   animation: backgroundAnimation 10s ease-in-out infinite;
 }
 
-/* Animação para a mudança de gradiente de fundo (alterada para preto) */
+/* Animação do fundo */
 @keyframes backgroundAnimation {
-  0% {
-    background: #000000; /* Fundo preto */
-  }
-  50% {
-    background: #000000; /* Fundo preto */
-  }
+  0%,
+  50%,
   100% {
-    background: #000000; /* Fundo preto */
+    background: #000000;
   }
 }
 
 /* Estilos do container do formulário */
 .form-container {
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.8),
-    rgba(0, 0, 0, 0.7)
-  ); /* Gradiente suave */
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7));
   padding: 40px;
   border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); /* Sombra mais intensa */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
   width: 100%;
   max-width: 450px;
-  backdrop-filter: blur(10px); /* Desfoque no fundo */
+  backdrop-filter: blur(10px);
   transform: scale(0.95);
   animation: popIn 0.5s ease-out forwards;
-  border: 2px solid transparent; /* Tornar a borda invisível */
-  box-shadow: 0 0 15px rgba(255, 71, 71, 0.7); /* Borda luminosa vermelha */
 }
 
-/* Animação de 'pop-in' para o container */
+/* Animação de entrada do formulário */
 @keyframes popIn {
   from {
     transform: scale(0.95);
@@ -61,16 +51,15 @@ body {
   }
 }
 
-/* Estilo para o título (h2) */
+/* Estilos do título */
 h2 {
   text-align: center;
   margin-bottom: 20px;
   font-size: 28px;
-  letter-spacing: 1px;
   animation: fadeIn 1s ease-out;
 }
 
-/* Animação de fade-in para o título */
+/* Animação de fade-in do título */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -80,40 +69,38 @@ h2 {
   }
 }
 
-/* Estilos para os containers de entrada de dados */
+/* Estilos dos campos de entrada */
 .input-container {
   position: relative;
   margin-bottom: 15px;
 }
 
-/* Estilos para os ícones dentro dos campos de entrada */
 input {
   width: 100%;
   padding: 12px 12px 12px 40px;
   margin: 12px 0;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
-  background-color: #333; /* Cor de fundo do input */
-  color: #ff4747; /* Cor do texto do input (vermelho) */
+  background-color: #333;
+  color: #ff4747;
   transition: background-color 0.3s ease, border-color 0.3s ease,
     transform 0.2s ease;
 }
 
-/* Efeito ao focar no campo de entrada */
+/* Efeito de foco nos campos de entrada */
 input:focus {
   outline: none;
-  background-color: #444; /* Cor de fundo um pouco mais clara ao focar */
-  border: 2px solid #ff4747; /* Cor da borda ao focar */
-  color: #ff4747; /* Mantém a cor do texto vermelha */
+  background-color: #444;
+  border: 2px solid #ff4747;
+  color: #ff4747;
   transform: scale(1.05);
 }
 
-/* Estilos para o botão de envio */
+/* Estilos do botão */
 button {
   width: 100%;
   padding: 14px;
-  background-color: #ff4747; /* Cor de fundo do botão */
+  background-color: #ff4747;
   color: white;
   border: none;
   border-radius: 5px;
@@ -123,51 +110,36 @@ button {
     box-shadow 0.3s ease;
 }
 
-/* Efeito ao passar o mouse sobre o botão */
+/* Efeito no botão ao passar o mouse */
 button:hover {
-  background-color: #cc0000; /* Cor vermelha mais intensa no hover */
+  background-color: #cc0000;
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Efeito quando o botão é pressionado */
-button:active {
-  transform: translateY(0);
-}
-
-/* Estilos para o parágrafo com link */
-p {
-  text-align: center;
-  margin-top: 15px;
-}
-
-/* Estilos para o link */
+/* Estilos do link */
 a {
-  color: #ff4747; /* Cor do link */
+  color: #ff4747;
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s ease;
 }
 
-/* Efeito ao passar o mouse sobre o link */
+/* Efeito no link ao passar o mouse */
 a:hover {
   text-decoration: underline;
-  color: #cc0000; /* Cor do link no hover */
+  color: #cc0000;
 }
 
-/* Estilos para as mensagens de erro/sucesso */
+/* Estilos para mensagens de erro/sucesso */
 .alert {
-  background-color: #ff4747; /* Cor de fundo vermelho para erros */
-  color: white; /* Cor do texto branco */
   padding: 15px;
   margin-bottom: 20px;
   border-radius: 5px;
   font-size: 16px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
-  animation: popupAnimation 0.5s ease-out forwards; /* Animação de popup */
+  animation: popupAnimation 0.5s ease-out forwards;
 }
 
-/* Animação para o efeito de popup */
 @keyframes popupAnimation {
   from {
     transform: scale(0.8);
@@ -179,17 +151,13 @@ a:hover {
   }
 }
 
-/* Estilo para mensagens de sucesso */
-.alert.alert-success {
-  background-color: #28a745; /* Cor verde para sucesso */
+/* Estilos de cores para alertas */
+.alert-success {
+  background-color: #28a745;
 }
-
-/* Estilo para mensagens de aviso */
-.alert.alert-warning {
-  background-color: #ffc107; /* Cor amarela para avisos */
+.alert-warning {
+  background-color: #ffc107;
 }
-
-/* Estilo para mensagens de erro */
-.alert.alert-danger {
-  background-color: #ff4747; /* Cor vermelha para erros */
+.alert-danger {
+  background-color: #ff4747;
 }

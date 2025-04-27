@@ -24,20 +24,19 @@
       {% for message in messages %}
       <div class="alert alert-{{ message.tags }}">{{ message }}</div>
       {% endfor %}
-      <!-- O loop for percorre todas as mensagens (erro, sucesso) e as exibe com o estilo adequado,
-           baseado nas tags da mensagem (ex: 'error', 'success') -->
+      <!-- O loop percorre todas as mensagens (erro, sucesso) e as exibe com o estilo adequado -->
 
       <!-- Formulário de cadastro -->
       <form method="POST">
         {% csrf_token %}
-        <!-- CSRF token é utilizado para proteger o formulário contra ataques de falsificação de requisição -->
+        <!-- CSRF token para proteger o formulário contra ataques de falsificação de requisição -->
 
         <!-- Campo para o nome de usuário -->
         <div class="input-container">
           <i class="fas fa-user"></i>
           <!-- Ícone de usuário (Font Awesome) -->
           <input type="text" name="username" placeholder="Usuário" required />
-          <!-- O campo de entrada para o nome de usuário é obrigatório -->
+          <!-- Campo de entrada para o nome de usuário, obrigatório -->
         </div>
 
         <!-- Campo para a senha -->
@@ -50,7 +49,7 @@
             placeholder="Senha"
             required
           />
-          <!-- O campo de senha é obrigatório e usado para digitar a senha do usuário -->
+          <!-- Campo de senha, obrigatório -->
         </div>
 
         <!-- Campo para confirmar a senha -->
@@ -63,18 +62,17 @@
             placeholder="Confirme a Senha"
             required
           />
-          <!-- O campo de confirmação de senha é obrigatório e serve para validar se a senha digitada anteriormente
-               está correta -->
+          <!-- Campo de confirmação de senha, obrigatório para validar se as senhas coincidem -->
         </div>
 
         <!-- Botão para submeter o formulário de cadastro -->
         <button type="submit">
           <i class="fas fa-user-plus"></i> Cadastrar
         </button>
-        <!-- O botão de envio, com ícone de adicionar usuário (Font Awesome) -->
+        <!-- Botão de envio com ícone de adicionar usuário (Font Awesome) -->
       </form>
 
-      <!-- Link para redirecionar o usuário para a página de login caso já tenha uma conta -->
+      <!-- Link para redirecionar o usuário para a página de login -->
       <p>Já tem uma conta? <a href="{% url 'login' %}">Faça login</a></p>
     </div>
   </body>
