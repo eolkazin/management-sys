@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estoque - Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'css/hub/estoque/estoque.css' %}" />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>Estoque</h2>
+      <ul>
+        <li>
+          <a href="#"><i class="fas fa-box"></i> Dashboard</a>
+        </li>
+        <li>
+          <a href="#"><i class="fas fa-cogs"></i> Configurações</a>
+        </li>
+        <li>
+          <a href="#"><i class="fas fa-truck"></i> Entradas</a>
+        </li>
+        <li>
+          <a href="#"><i class="fas fa-exchange-alt"></i> Saídas</a>
+        </li>
+        <li>
+          <a href="#"><i class="fas fa-boxes"></i> Produtos</a>
+        </li>
+        <li>
+          <a href="#"><i class="fas fa-users"></i> Fornecedores</a>
+        </li>
+      </ul>
+      <button class="btn"><i class="fas fa-sign-out-alt"></i> Sair</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Header -->
+      <header>
+        <h1><i class="fas fa-warehouse"></i> Controle de Estoque</h1>
+        <button class="btn"><i class="fas fa-plus"></i> Novo Produto</button>
+      </header>
+
+      <!-- Seções de Conteúdo -->
+      <section class="content-section">
+        <h2><i class="fas fa-box"></i> Cadastro de Produtos</h2>
+        <form method="POST">
+          {% csrf_token %}
+          <input type="text" placeholder="Nome do Produto" required />
+          <textarea placeholder="Descrição do Produto" required></textarea>
+          <input type="text" placeholder="Categoria" required />
+          <input type="text" placeholder="Fornecedor" required />
+          <input type="number" placeholder="Custo Unitário" required />
+          <input type="number" placeholder="Preço de Venda" required />
+          <input type="number" placeholder="Quantidade em Estoque" required />
+          <input type="text" placeholder="Localização no Armazém" required />
+          <input type="date" placeholder="Data de Validade" />
+          <input type="file" placeholder="Imagem do Produto" />
+          <button type="submit">
+            <i class="fas fa-save"></i> Salvar Produto
+          </button>
+        </form>
+      </section>
+
+      <!-- Tabela de Estoque -->
+      <section class="content-section stock-list">
+        <h2><i class="fas fa-list"></i> Lista de Produtos</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Produto</th>
+              <th>Custo</th>
+              <th>Preço</th>
+              <th>Quantidade</th>
+              <th>Localização</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>001</td>
+              <td>Produto Exemplo 1</td>
+              <td>R$ 20,00</td>
+              <td>R$ 30,00</td>
+              <td>50</td>
+              <td>Prateleira 1</td>
+              <td>
+                <button class="btn-delete">
+                  <i class="fas fa-trash-alt"></i> Excluir
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>002</td>
+              <td>Produto Exemplo 2</td>
+              <td>R$ 15,00</td>
+              <td>R$ 25,00</td>
+              <td>20</td>
+              <td>Prateleira 2</td>
+              <td>
+                <button class="btn-delete">
+                  <i class="fas fa-trash-alt"></i> Excluir
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </body>
+</html>

@@ -9,4 +9,5 @@ urlpatterns = [
     path(
         "logout/", views.logout_view, name="logout"
     ),  # Hub do sistema, onde o usuário será redirecionado após login
+    path("estoque/", views.estoque_view, name="estoque"),  # Página de estoque
 ]

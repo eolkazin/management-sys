@@ -74,3 +74,7 @@ def hub_view(request):
 def logout_view(request):
     logout(request)  # Desconecta o usuário
     return redirect("login")  # Redireciona para a página de login
+
+
+def estoque_view(request):
+    return render(request, "hub/estoque/estoque.html")  # Renderiza a página de estoque
