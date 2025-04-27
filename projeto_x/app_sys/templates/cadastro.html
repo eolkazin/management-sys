@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    {% load static %}
+
+    <meta charset="UTF-8" />
+    <title>Cadastro</title>
+
+    <!-- Link para o arquivo de estilos CSS da página de cadastro -->
+    <link rel="stylesheet" href="{% static 'css/cadastro.css' %}" />
+
+    <!-- Link para a biblioteca Font Awesome (ícones) -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome fornece ícones como 'user', 'lock', 'user-plus', entre outros -->
+  </head>
+  <body>
+    <!-- Container principal do formulário de cadastro -->
+    <div class="form-container">
+      <h2>Cadastro</h2>
+      <!-- Título da página de cadastro -->
+
+      <!-- Exibe mensagens de erro ou sucesso -->
+      {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+      <!-- O loop for percorre todas as mensagens (erro, sucesso) e as exibe com o estilo adequado,
+           baseado nas tags da mensagem (ex: 'error', 'success') -->
+
+      <!-- Formulário de cadastro -->
+      <form method="POST">
+        {% csrf_token %}
+        <!-- CSRF token é utilizado para proteger o formulário contra ataques de falsificação de requisição -->
+        
+        <!-- Campo para o nome de usuário -->
+        <div class="input-container">
+          <i class="fas fa-user"></i> <!-- Ícone de usuário (Font Awesome) -->
+          <input type="text" name="username" placeholder="Usuário" required />
+          <!-- O campo de entrada para o nome de usuário é obrigatório -->
+        </div>
+
+        <!-- Campo para a senha -->
+        <div class="input-container">
+          <i class="fas fa-lock"></i> <!-- Ícone de cadeado (Font Awesome) -->
+          <input
+            type="password"
+            name="password1"
+            placeholder="Senha"
+            required
+          />
+          <!-- O campo de senha é obrigatório e usado para digitar a senha do usuário -->
+        </div>
+
+        <!-- Campo para confirmar a senha -->
+        <div class="input-container">
+          <i class="fas fa-lock"></i> <!-- Ícone de cadeado (Font Awesome) -->
+          <input
+            type="password"
+            name="password2"
+            placeholder="Confirme a Senha"
+            required
+          />
+          <!-- O campo de confirmação de senha é obrigatório e serve para validar se a senha digitada anteriormente
+               está correta -->
+        </div>
+
+        <!-- Botão para submeter o formulário de cadastro -->
+        <button type="submit">
+          <i class="fas fa-user-plus"></i> Cadastrar
+        </button>
+        <!-- O botão de envio, com ícone de adicionar usuário (Font Awesome) -->
+      </form>
+
+      <!-- Link para redirecionar o usuário para

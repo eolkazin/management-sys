@@ -1,0 +1,162 @@
+/* login.css */
+
+/* Reseta margens, paddings e configura a caixa de modelo */
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box; /* Faz com que paddings e bordas sejam incluídos nas dimensões dos elementos */
+   }
+   
+   /* Estilos gerais do corpo da página */
+   body {
+     font-family: "Arial", sans-serif; /* Fonte padrão para o corpo */
+     background: linear-gradient(135deg, #6a4c9c, #9b69c7); /* Gradiente de fundo suave */
+     display: flex; /* Flexbox para centralizar o conteúdo */
+     justify-content: center; /* Alinha horizontalmente no centro */
+     align-items: center; /* Alinha verticalmente no centro */
+     height: 100vh; /* A altura é 100% da altura da janela */
+     color: white; /* Cor do texto */
+     animation: backgroundAnimation 10s ease-in-out infinite; /* Animação contínua para o fundo */
+   }
+   
+   /* Animação para a mudança de gradiente de fundo */
+   @keyframes backgroundAnimation {
+     0% {
+       background: linear-gradient(135deg, #6a4c9c, #9b69c7); /* Gradiente inicial */
+     }
+     50% {
+       background: linear-gradient(135deg, #9b69c7, #6a4c9c); /* Gradiente invertido no meio */
+     }
+     100% {
+       background: linear-gradient(135deg, #6a4c9c, #9b69c7); /* Gradiente final */
+     }
+   }
+   
+   /* Estilos do container do formulário */
+   .form-container {
+     background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro com transparência */
+     padding: 40px; /* Espaçamento interno */
+     border-radius: 12px; /* Bordas arredondadas */
+     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Sombra para dar profundidade */
+     width: 100%; /* Largura total do container */
+     max-width: 450px; /* Largura máxima de 450px */
+     backdrop-filter: blur(10px); /* Efeito de desfoque no fundo do container */
+     transform: scale(0.95); /* Começa ligeiramente menor */
+     animation: popIn 0.5s ease-out forwards; /* Animação de entrada do container */
+   }
+   
+   /* Animação de 'pop-in' para o container */
+   @keyframes popIn {
+     from {
+       transform: scale(0.95); /* Começa com escala menor */
+       opacity: 0; /* Começa invisível */
+     }
+     to {
+       transform: scale(1); /* Escala normal */
+       opacity: 1; /* Opacidade completa */
+     }
+   }
+   
+   /* Estilo para o título (h2) */
+   h2 {
+     text-align: center; /* Alinha o título no centro */
+     margin-bottom: 20px; /* Espaçamento abaixo do título */
+     font-size: 28px; /* Tamanho da fonte */
+     letter-spacing: 1px; /* Espaçamento entre as letras */
+     animation: fadeIn 1s ease-out; /* Animação de fade-in */
+   }
+   
+   /* Animação de fade-in para o título */
+   @keyframes fadeIn {
+     from {
+       opacity: 0; /* Começa invisível */
+     }
+     to {
+       opacity: 1; /* Fica totalmente visível */
+     }
+   }
+   
+   /* Estilos para os containers de entrada de dados */
+   .input-container {
+     position: relative; /* Para posicionar o ícone dentro do campo de entrada */
+     margin-bottom: 15px; /* Espaçamento abaixo de cada campo */
+   }
+   
+   /* Estilos para os ícones dentro dos campos de entrada */
+   .input-container i {
+     position: absolute;
+     left: 12px; /* Posiciona o ícone à esquerda do campo */
+     top: 50%; /* Alinha verticalmente no centro */
+     transform: translateY(-50%); /* Corrige o alinhamento vertical */
+     color: #9b69c7; /* Cor do ícone */
+     font-size: 18px; /* Tamanho do ícone */
+   }
+   
+   /* Estilos para os campos de entrada (input) */
+   input {
+     width: 100%; /* Largura total */
+     padding: 12px 12px 12px 40px; /* Espaço interno, com 40px à esquerda para o ícone */
+     margin: 12px 0; /* Espaçamento superior e inferior */
+     border: none; /* Remove a borda padrão */
+     border-radius: 5px; /* Bordas arredondadas */
+     font-size: 16px; /* Tamanho da fonte */
+     background-color: #f9f9f9; /* Cor de fundo clara */
+     color: #333; /* Cor do texto */
+     transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+     /* Transições suaves para mudanças de cor e transformação */
+   }
+   
+   /* Efeito ao focar no campo de entrada */
+   input:focus {
+     outline: none; /* Remove o contorno padrão */
+     background-color: #e0e0e0; /* Muda a cor de fundo */
+     border: 2px solid #9b69c7; /* Borda roxa ao focar */
+     transform: scale(1.05); /* Aumenta ligeiramente o tamanho do campo */
+   }
+   
+   /* Estilos para o botão de envio */
+   button {
+     width: 100%; /* Largura total */
+     padding: 14px; /* Espaçamento interno */
+     background-color: #9b69c7; /* Cor de fundo roxa */
+     color: white; /* Cor do texto */
+     border: none; /* Remove a borda */
+     border-radius: 5px; /* Bordas arredondadas */
+     font-size: 18px; /* Tamanho da fonte */
+     cursor: pointer; /* Muda o cursor para indicar que é clicável */
+     transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+     /* Transições suaves para mudanças de cor, posição e sombra */
+   }
+   
+   /* Efeito ao passar o mouse sobre o botão */
+   button:hover {
+     background-color: #6a4c9c; /* Muda a cor de fundo */
+     transform: translateY(-5px); /* Faz o botão 'subir' ligeiramente */
+     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Adiciona sombra */
+   }
+   
+   /* Efeito quando o botão é pressionado */
+   button:active {
+     transform: translateY(0); /* Reseta a posição do botão */
+   }
+   
+   /* Estilos para o parágrafo com link */
+   p {
+     text-align: center; /* Centraliza o texto */
+     margin-top: 15px; /* Espaçamento superior */
+   }
+   
+   /* Estilos para o link */
+   a {
+     color: #d9a2e4; /* Cor do link */
+     text-decoration: none; /* Remove a sublinha padrão */
+     font-weight: bold; /* Deixa o link em negrito */
+     transition: color 0.3s ease; /* Transição suave para mudança de cor */
+   }
+   
+   /* Efeito ao passar o mouse sobre o link */
+   a:hover {
+     text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+     color: #fff; /* Muda a cor para branca */
+   }
+   
