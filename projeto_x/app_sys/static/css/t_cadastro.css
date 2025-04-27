@@ -1,0 +1,168 @@
+/* cadastro.css */
+
+/* Reseta margens, paddings e configura a caixa de modelo */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos gerais do corpo da página */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #000000; /* Fundo sólido e escuro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #e0e0e0; /* Cor do texto */
+  animation: backgroundAnimation 10s ease-in-out infinite; /* Fundo animado */
+}
+
+/* Animação de fundo */
+@keyframes backgroundAnimation {
+  0% {
+    background: #000000;
+  }
+  50% {
+    background: #000000;
+  }
+  100% {
+    background: #000000;
+  }
+}
+
+/* Estilos do container do formulário */
+.form-container {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.7)
+  ); /* Gradiente suave */
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); /* Sombra mais intensa */
+  width: 100%;
+  max-width: 450px;
+  backdrop-filter: blur(10px); /* Desfoque no fundo */
+  transform: scale(0.95);
+  animation: popIn 0.5s ease-out forwards;
+  border: 2px solid transparent; /* Borda invisível */
+  box-shadow: 0 0 15px rgba(255, 71, 71, 0.7); /* Borda luminosa vermelha */
+}
+
+/* Animação de 'pop-in' para o container */
+@keyframes popIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Estilo para o título (h2) */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 28px;
+  letter-spacing: 1px;
+  animation: fadeIn 1s ease-out; /* Animação de fade-in */
+}
+
+/* Animação de fade-in para o título */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Estilos para os containers de entrada de dados */
+.input-container {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+/* Estilos para os ícones dentro dos campos de entrada */
+.input-container i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ff4747; /* Cor do ícone */
+  font-size: 18px;
+}
+
+/* Estilos para os campos de entrada (input) */
+input {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  margin: 12px 0;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #333; /* Cor de fundo escura */
+  color: #ff4747; /* Cor do texto (vermelho) */
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+    transform 0.2s ease;
+}
+
+/* Efeito ao focar no campo de entrada */
+input:focus {
+  outline: none;
+  background-color: #444; /* Fundo mais claro */
+  color: #ff4747; /* Cor do texto vermelha */
+  border: 2px solid #ff4747; /* Borda vermelha */
+  transform: scale(1.05);
+}
+
+/* Estilos para o botão de envio */
+button {
+  width: 100%;
+  padding: 14px;
+  background-color: #ff4747; /* Cor de fundo vermelha */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Efeito ao passar o mouse sobre o botão */
+button:hover {
+  background-color: #cc0000; /* Cor mais intensa */
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Efeito quando o botão é pressionado */
+button:active {
+  transform: translateY(0);
+}
+
+/* Estilos para o parágrafo com link */
+p {
+  text-align: center;
+  margin-top: 15px;
+}
+
+/* Estilos para o link */
+a {
+  color: #ff4747; /* Cor vermelha para o link */
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+/* Efeito ao passar o mouse sobre o link */
+a:hover {
+  text-decoration: underline;
+  color: #cc0000; /* Cor mais escura no hover */
+}

@@ -1,0 +1,198 @@
+/* login.css */
+
+/* Reseta margens, paddings e configura a caixa de modelo */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos gerais do corpo da página */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #000000; /* Fundo totalmente preto */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #e0e0e0;
+  animation: backgroundAnimation 10s ease-in-out infinite;
+}
+
+/* Animação para a mudança de gradiente de fundo (alterada para preto) */
+@keyframes backgroundAnimation {
+  0% {
+    background: #000000; /* Fundo preto */
+  }
+  50% {
+    background: #000000; /* Fundo preto */
+  }
+  100% {
+    background: #000000; /* Fundo preto */
+  }
+}
+
+/* Estilos do container do formulário */
+.form-container {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.8),
+    rgba(0, 0, 0, 0.7)
+  ); /* Gradiente suave */
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5); /* Sombra mais intensa */
+  width: 100%;
+  max-width: 450px;
+  backdrop-filter: blur(10px); /* Desfoque no fundo */
+  transform: scale(0.95);
+  animation: popIn 0.5s ease-out forwards;
+  border: 2px solid transparent; /* Tornar a borda invisível */
+  box-shadow: 0 0 15px rgba(255, 71, 71, 0.7); /* Borda luminosa vermelha */
+}
+
+/* Animação de 'pop-in' para o container */
+@keyframes popIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Estilo para o título (h2) */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 28px;
+  letter-spacing: 1px;
+  animation: fadeIn 1s ease-out;
+}
+
+/* Animação de fade-in para o título */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Estilos para os containers de entrada de dados */
+.input-container {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+/* Estilos para os ícones dentro dos campos de entrada */
+input {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  margin: 12px 0;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #333; /* Cor de fundo do input */
+  color: #ff4747; /* Cor do texto do input (vermelho) */
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+    transform 0.2s ease;
+}
+
+/* Efeito ao focar no campo de entrada */
+input:focus {
+  outline: none;
+  background-color: #444; /* Cor de fundo um pouco mais clara ao focar */
+  border: 2px solid #ff4747; /* Cor da borda ao focar */
+  color: #ff4747; /* Mantém a cor do texto vermelha */
+  transform: scale(1.05);
+}
+
+/* Efeito ao focar no campo de entrada */
+input:focus {
+  outline: none;
+  background-color: #444; /* Cor de fundo um pouco mais clara ao focar */
+  border: 2px solid #ff4747; /* Cor da borda ao focar */
+  color: #e0e0e0; /* Mantém a cor do texto visível */
+  transform: scale(1.05);
+}
+
+/* Estilos para o botão de envio */
+button {
+  width: 100%;
+  padding: 14px;
+  background-color: #ff4747; /* Cor de fundo do botão */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Efeito ao passar o mouse sobre o botão */
+button:hover {
+  background-color: #cc0000; /* Cor vermelha mais intensa no hover */
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Efeito quando o botão é pressionado */
+button:active {
+  transform: translateY(0);
+}
+
+/* Estilos para o parágrafo com link */
+p {
+  text-align: center;
+  margin-top: 15px;
+}
+
+/* Estilos para o link */
+a {
+  color: #ff4747; /* Cor do link */
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+/* Efeito ao passar o mouse sobre o link */
+a:hover {
+  text-decoration: underline;
+  color: #cc0000; /* Cor do link no hover */
+}
+
+/* Estilos do cabeçalho */
+header {
+  background-color: #1a1a1a; /* Cor do fundo do cabeçalho */
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Estilos do rodapé */
+footer {
+  background-color: #1a1a1a; /* Cor do fundo do rodapé */
+  padding: 10px;
+  text-align: center;
+  color: #aaa; /* Cor do texto do rodapé */
+}
+
+/* Estilos para o menu */
+.menu-item {
+  background-color: #2a2a2a; /* Cor de fundo do item de menu */
+  padding: 10px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Efeito ao passar o mouse sobre o item do menu */
+.menu-item:hover {
+  background-color: #ff4747; /* Cor do item de menu no hover */
+}

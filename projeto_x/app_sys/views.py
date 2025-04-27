@@ -54,4 +54,13 @@ def cadastro_view(request):
 
 
 def hub_view(request):
-    return render(request, "hub/hub.html")
+    # Verifica se o usuário está logado
+    usuario_id = request.session.get("usuario_id")
+    if usuario_id:
+        try:
+            usuario = Usuario.objects.get(id=usuario_id)
+            return render(request, "hub/hub.html", {"usuario": usuario})
+        except Usuario.DoesNotExist:
+            return redirect("login")  # Caso o usuário não exista mais
+    else:
+        return redirect("login")  # Se o usuário não estiver logado
