@@ -16,7 +16,7 @@ def login_view(request):
             usuario = Usuario.objects.get(username=username)
             if check_password(password, usuario.password):
                 request.session["usuario_id"] = usuario.id
-                return redirect("home")
+                return redirect("hub")
             else:
                 messages.error(request, "Usuário ou senha inválidos.")
                 return redirect("login")
@@ -54,4 +54,4 @@ def cadastro_view(request):
 
 
 def hub_view(request):
-    return render(request, "hub.html")
+    return render(request, "hub/hub.html")
