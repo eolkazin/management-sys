@@ -14,19 +14,15 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
       rel="stylesheet"
     />
-    <!-- Font Awesome fornece ícones como 'user', 'lock', 'user-plus', entre outros -->
   </head>
   <body>
     <!-- Container principal do formulário de cadastro -->
     <div class="form-container">
       <h2>Cadastro</h2>
-      <!-- Título da página de cadastro -->
 
       <!-- Exibe mensagens de erro ou sucesso -->
       {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}">
-          {{ message }}
-        </div>
+      <div class="alert alert-{{ message.tags }}">{{ message }}</div>
       {% endfor %}
       <!-- O loop for percorre todas as mensagens (erro, sucesso) e as exibe com o estilo adequado,
            baseado nas tags da mensagem (ex: 'error', 'success') -->
@@ -35,17 +31,19 @@
       <form method="POST">
         {% csrf_token %}
         <!-- CSRF token é utilizado para proteger o formulário contra ataques de falsificação de requisição -->
-        
+
         <!-- Campo para o nome de usuário -->
         <div class="input-container">
-          <i class="fas fa-user"></i> <!-- Ícone de usuário (Font Awesome) -->
+          <i class="fas fa-user"></i>
+          <!-- Ícone de usuário (Font Awesome) -->
           <input type="text" name="username" placeholder="Usuário" required />
           <!-- O campo de entrada para o nome de usuário é obrigatório -->
         </div>
 
         <!-- Campo para a senha -->
         <div class="input-container">
-          <i class="fas fa-lock"></i> <!-- Ícone de cadeado (Font Awesome) -->
+          <i class="fas fa-lock"></i>
+          <!-- Ícone de cadeado (Font Awesome) -->
           <input
             type="password"
             name="password1"
@@ -57,7 +55,8 @@
 
         <!-- Campo para confirmar a senha -->
         <div class="input-container">
-          <i class="fas fa-lock"></i> <!-- Ícone de cadeado (Font Awesome) -->
+          <i class="fas fa-lock"></i>
+          <!-- Ícone de cadeado (Font Awesome) -->
           <input
             type="password"
             name="password2"
@@ -75,4 +74,8 @@
         <!-- O botão de envio, com ícone de adicionar usuário (Font Awesome) -->
       </form>
 
-      <!-- Link para redirecionar o usuário para
+      <!-- Link para redirecionar o usuário para a página de login caso já tenha uma conta -->
+      <p>Já tem uma conta? <a href="{% url 'login' %}">Faça login</a></p>
+    </div>
+  </body>
+</html>

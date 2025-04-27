@@ -14,7 +14,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
       rel="stylesheet"
     />
-    <!-- Font Awesome permite usar ícones como 'user', 'lock', 'sign-in-alt', entre outros -->
   </head>
   <body>
     <!-- Container principal do formulário de login -->
@@ -25,38 +24,30 @@
       {% for message in messages %}
       <div class="alert alert-{{ message.tags }}">{{ message }}</div>
       {% endfor %}
-      <!-- O loop exibe qualquer mensagem de erro ou sucesso, com o estilo adequado
-           dependendo do tipo de mensagem (sucesso, erro, etc.) -->
+      <!-- O loop exibe qualquer mensagem de erro ou sucesso, com o estilo adequado -->
 
       <!-- Formulário de login -->
       <form method="POST">
         {% csrf_token %}
-        <!-- Token CSRF é necessário para prevenir ataques de falsificação de solicitação entre sites -->
 
         <!-- Campo de entrada para o nome de usuário -->
         <div class="input-container">
           <i class="fas fa-user"></i>
-          <!-- Ícone de usuário -->
           <input type="text" name="username" placeholder="Usuário" required />
-          <!-- O campo de texto para o nome de usuário é obrigatório -->
         </div>
 
         <!-- Campo de entrada para a senha -->
         <div class="input-container">
           <i class="fas fa-lock"></i>
-          <!-- Ícone de cadeado -->
           <input type="password" name="password" placeholder="Senha" required />
-          <!-- O campo de senha é obrigatório -->
         </div>
 
         <!-- Botão de submissão do formulário -->
         <button type="submit"><i class="fas fa-sign-in-alt"></i> Entrar</button>
-        <!-- Ícone de login no botão -->
       </form>
 
       <!-- Link para redirecionar o usuário à página de cadastro, caso não tenha conta -->
       <p>Não tem conta? <a href="{% url 'cadastro' %}">Cadastre-se</a></p>
-      <!-- O link chama a URL nomeada 'cadastro' para redirecionar o usuário -->
     </div>
   </body>
 </html>
