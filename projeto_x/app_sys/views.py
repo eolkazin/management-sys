@@ -2,21 +2,25 @@ from django.shortcuts import render, redirect
 from .models import Usuario
 from django.contrib.auth.hashers import make_password
 from django.contrib import messages
-
+from django.contrib.auth.hashers import check_password
 
 ### Exibe a página de login e valida as credenciais ###
+
+
 def login_view(request):
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
 
         try:
-            # Tenta encontrar o usuário com as credenciais fornecidas
-            usuario = Usuario.objects.get(username=username, password=password)
-            request.session["usuario_id"] = usuario.id
-            return redirect("home")
+            usuario = Usuario.objects.get(username=username)
+            if check_password(password, usuario.password):
+                request.session["usuario_id"] = usuario.id
+                return redirect("home")
+            else:
+                messages.error(request, "Usuário ou senha inválidos.")
+                return redirect("login")
         except Usuario.DoesNotExist:
-            # Se o usuário não for encontrado, exibe mensagem de erro
             messages.error(request, "Usuário ou senha inválidos.")
             return redirect("login")
 
@@ -47,3 +51,7 @@ def cadastro_view(request):
             return redirect("cadastro")
 
     return render(request, "cadastro.html")
+
+
+def hub_view(request):
+    return render(request, "hub.html")
