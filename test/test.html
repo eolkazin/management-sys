@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestão de Finanças</title>
+    <link rel="stylesheet" href="test.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">Gestão de Finanças</div>
+      <nav>
+        <ul>
+          <li><a href="#">Dashboard</a></li>
+          <li><a href="#">Transações</a></li>
+          <li><a href="#">Relatórios</a></li>
+          <li><a href="#">Configurações</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Modal Resumo Financeiro -->
+      <section class="dashboard">
+        <h1>Resumo Financeiro</h1>
+        <div class="cards">
+          <div class="card receitas">
+            <h3>Receitas</h3>
+            <p class="amount">R$ 12.500,00</p>
+          </div>
+          <div class="card despesas">
+            <h3>Despesas</h3>
+            <p class="amount">R$ 7.800,00</p>
+          </div>
+          <div class="card lucro">
+            <h3>Lucro</h3>
+            <p class="amount">R$ 4.700,00</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Modal Últimas Transações -->
+      <section class="transacoes">
+        <h2>Últimas Transações</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Descrição</th>
+              <th>Valor</th>
+              <th>Tipo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>25/04/2025</td>
+              <td>Venda de produto X</td>
+              <td class="positive">R$ 500,00</td>
+              <td class="receita">Receita</td>
+            </tr>
+            <tr>
+              <td>24/04/2025</td>
+              <td>Pagamento fornecedor Y</td>
+              <td class="negative">R$ 1.200,00</td>
+              <td class="despesa">Despesa</td>
+            </tr>
+            <tr>
+              <td>23/04/2025</td>
+              <td>Venda de serviço Z</td>
+              <td class="positive">R$ 1.800,00</td>
+              <td class="receita">Receita</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Modal Contas -->
+      <section class="contas">
+        <h2>Contas a Pagar e a Receber</h2>
+        <div class="contas-list">
+          <div class="conta pagar">
+            <h4>Conta a Pagar</h4>
+            <p class="conta-valor">R$ 1.000,00</p>
+          </div>
+          <div class="conta receber">
+            <h4>Conta a Receber</h4>
+            <p class="conta-valor">R$ 2.500,00</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Gestão de Finanças. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Modais -->
+    <div class="modal" id="modalResumoFinanceiro">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modalResumoFinanceiro')"
+          >&times;</span
+        >
+        <h2>Resumo Financeiro Completo</h2>
+        <p>Detalhes das receitas, despesas e lucros aqui...</p>
+      </div>
+    </div>
+
+    <div class="modal" id="modalTransacoes">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modalTransacoes')"
+          >&times;</span
+        >
+        <h2>Transações Detalhadas</h2>
+        <p>Detalhes das transações recentes aqui...</p>
+      </div>
+    </div>
+
+    <div class="modal" id="modalContas">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modalContas')">&times;</span>
+        <h2>Contas a Pagar e a Receber</h2>
+        <p>Detalhes das contas a pagar e a receber aqui...</p>
+      </div>
+    </div>
+
+    <script>
+      function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+      }
+    </script>
+  </body>
+</html>
