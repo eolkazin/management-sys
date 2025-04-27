@@ -3,6 +3,7 @@ from .models import Usuario
 from django.contrib.auth.hashers import make_password
 from django.contrib import messages
 from django.contrib.auth.hashers import check_password
+from django.contrib.auth import logout
 
 
 ### Exibe a página de login e valida as credenciais ###
@@ -67,3 +68,9 @@ def hub_view(request):
             return redirect("login")  # Caso o usuário não exista mais
     else:
         return redirect("login")  # Se o usuário não estiver logado
+
+
+### Desconecta o usuário e redireciona para a página de login ###
+def logout_view(request):
+    logout(request)  # Desconecta o usuário
+    return redirect("login")  # Redireciona para a página de login
