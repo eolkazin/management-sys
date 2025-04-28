@@ -1,9 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Usuario
 from django.contrib.auth.hashers import make_password
 from django.contrib import messages
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth import logout
+from .models import Produto
 
 
 ### Exibe a página de login e valida as credenciais ###
@@ -77,4 +78,43 @@ def logout_view(request):
 
 
 def estoque_view(request):
-    return render(request, "hub/estoque/estoque.html")  # Renderiza a página de estoque
+    if request.method == "POST":
+        nome = request.POST.get("nome")
+        descricao = request.POST.get("descricao")
+        categoria = request.POST.get("categoria")
+        fornecedor = request.POST.get("fornecedor")
+        custo_unitario = request.POST.get("custo_unitario")
+        preco_venda = request.POST.get("preco_venda")
+        quantidade = request.POST.get("quantidade")
+        localizacao = request.POST.get("localizacao")
+        data_validade = request.POST.get("data_validade")
+        imagem = request.FILES.get("imagem")  # Upload de arquivo
+
+        Produto.objects.create(
+            nome=nome,
+            descricao=descricao,
+            categoria=categoria,
+            fornecedor=fornecedor,
+            custo_unitario=custo_unitario,
+            preco_venda=preco_venda,
+            quantidade=quantidade,
+            localizacao=localizacao,
+            data_validade=data_validade if data_validade else None,
+            imagem=imagem,
+        )
+        return redirect("estoque")  # Reload na página pra ver o novo produto
+
+    produtos = Produto.objects.all()
+    return render(request, "hub/estoque/estoque.html", {"produtos": produtos})
+
+
+def deletar_produto(request, produto_id):
+    produto = get_object_or_404(Produto, id=produto_id)
+    if request.method == "POST":
+        produto.delete()
+        return redirect("estoque")
+
+
+def lista_produtos_view(request):
+    produtos = Produto.objects.all()  # Pega todos os produtos
+    return render(request, "hub/estoque/lista_produtos.html", {"produtos": produtos})
