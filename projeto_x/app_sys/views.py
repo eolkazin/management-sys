@@ -28,7 +28,7 @@ def login_view(request):
             messages.error(request, "Usuário ou senha inválidos.")
             return redirect("login")
 
-    return render(request, "login.html")
+    return render(request, "login/login.html")
 
 
 ### Exibe a página de cadastro e realiza a criação de um novo usuário ###
@@ -54,7 +54,7 @@ def cadastro_view(request):
             messages.error(request, "Usuário já existe.")
             return redirect("cadastro")
 
-    return render(request, "cadastro.html")
+    return render(request, "login/cadastro.html")
 
 
 ### Exibe a página do hub para o usuário logado ###
