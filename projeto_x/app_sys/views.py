@@ -1,10 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Usuario
-from django.contrib.auth.hashers import make_password
+from .models import Usuario, Produto, Cliente
+from django.contrib.auth.hashers import make_password, check_password
 from django.contrib import messages
-from django.contrib.auth.hashers import check_password
 from django.contrib.auth import logout
-from .models import Produto
 
 
 ### Exibe a página de login e valida as credenciais ###
@@ -77,6 +75,7 @@ def logout_view(request):
     return redirect("login")  # Redireciona para a página de login
 
 
+### Exibe e processa a página de estoque (adicionar produtos) ###
 def estoque_view(request):
     if request.method == "POST":
         nome = request.POST.get("nome")
@@ -105,6 +104,7 @@ def estoque_view(request):
     return render(request, "estoque/estoque.html", {"produtos": produtos})
 
 
+### Deleta um produto do estoque ###
 def deletar_produto(request, produto_id):
     produto = get_object_or_404(Produto, id=produto_id)
     if request.method == "POST":
@@ -112,6 +112,40 @@ def deletar_produto(request, produto_id):
         return redirect("estoque")
 
 
+### Lista todos os produtos no estoque ###
 def lista_produtos_view(request):
     produtos = Produto.objects.all()  # Pega todos os produtos
     return render(request, "estoque/lista_produtos.html", {"produtos": produtos})
+
+
+### Exibe e processa a página de cadastro de clientes ###
+def cad_cliente_view(request):
+    if request.method == "POST":
+        nome = request.POST.get("nome")
+        email = request.POST.get("email")
+        telefone = request.POST.get("telefone")
+        endereco = request.POST.get("endereco")
+        cidade = request.POST.get("cidade")
+        estado = request.POST.get("estado")
+        cpf = request.POST.get("cpf")
+        data_nascimento = request.POST.get("data_nascimento")
+
+        Cliente.objects.create(
+            nome=nome,
+            email=email,
+            telefone=telefone,
+            endereco=endereco,
+            cidade=cidade,
+            estado=estado,
+            cpf=cpf,
+            data_nascimento=data_nascimento if data_nascimento else None,
+        )
+        return redirect("cad_cliente")  # Pode mudar o redirect se quiser
+
+    return render(request, "cad_cliente/cad_cliente.html")
+
+
+### Lista todos os clientes cadastrados ###
+def lista_clientes_view(request):
+    clientes = Cliente.objects.all()
+    return render(request, "cad_cliente/lista_cliente.html", {"clientes": clientes})

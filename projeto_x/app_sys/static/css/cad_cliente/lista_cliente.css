@@ -1,0 +1,100 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Layout Geral */
+body {
+  font-family: "Arial", sans-serif;
+  background: #f4f4f4;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top Bar */
+.top-bar {
+  background-color: #1a1a1a;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.top-bar .logo h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.top-bar .actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.top-bar .btn {
+  background: #e60000;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.3s;
+}
+
+.top-bar .btn:hover {
+  background: #cc0000;
+}
+
+.top-bar .btn i {
+  font-size: 1.2rem;
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  padding: 2rem;
+}
+
+/* Seção de Conteúdo */
+.content-section {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+/* Tabela */
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+}
+
+.tabela th,
+.tabela td {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.tabela th {
+  background: #f8f8f8;
+  font-weight: bold;
+}
+
+.tabela tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+.tabela tr:hover {
+  background: #e0e0e0;
+}

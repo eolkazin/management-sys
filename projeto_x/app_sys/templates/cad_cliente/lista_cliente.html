@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Clientes</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/cad_cliente/lista_cliente.css' %}?v=1.0"
+    />
+  </head>
+  <body>
+    <!-- Top Bar -->
+    <header class="top-bar">
+      <div class="logo">
+        <h1><i class="fas fa-users"></i> Clientes</h1>
+      </div>
+      <nav class="actions">
+        <a href="{% url 'cad_cliente' %}" class="btn">
+          <i class="fas fa-user-plus"></i> Cadastrar
+        </a>
+        <a href="{% url 'hub' %}" class="btn">
+          <i class="fas fa-arrow-left"></i> Hub
+        </a>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <section class="content-section">
+        <table class="tabela">
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Telefone</th>
+              <th>Cidade</th>
+              <th>Estado</th>
+              <th>CPF</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for cliente in clientes %}
+            <tr>
+              <td>{{ cliente.nome }}</td>
+              <td>{{ cliente.email }}</td>
+              <td>{{ cliente.telefone }}</td>
+              <td>{{ cliente.cidade }}</td>
+              <td>{{ cliente.estado }}</td>
+              <td>{{ cliente.cpf }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+              <td colspan="6">Nenhum cliente cadastrado.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </body>
+</html>

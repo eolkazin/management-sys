@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clientes - Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/cad_cliente/cad_cliente.css' %}"
+    />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h2>Clientes</h2>
+      <ul>
+        <li>
+          <a href="#"><i class="fas fa-chart-bar"></i> Dashboard</a>
+        </li>
+        <li>
+          <a href="{% url 'lista_cliente' %}"
+            ><i class="fas fa-users"></i> Lista de Clientes</a
+          >
+        </li>
+      </ul>
+      <a href="{% url 'hub' %}" class="btn">
+        <i class="fas fa-arrow-left"></i> Voltar para o Hub
+      </a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Header -->
+      <header>
+        <h1><i class="fas fa-user-friends"></i> Controle de Clientes</h1>
+      </header>
+
+      <!-- Cadastro de Clientes -->
+      <section class="content-section">
+        <h2><i class="fas fa-user-plus"></i> Cadastro de Clientes</h2>
+        <form method="POST">
+          {% csrf_token %}
+
+          <div class="form-group">
+            <input
+              type="text"
+              name="nome"
+              placeholder="Nome do Cliente"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <input
+              type="email"
+              name="email"
+              placeholder="Email do Cliente"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <input
+              type="text"
+              name="telefone"
+              placeholder="Telefone"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <input
+              type="text"
+              name="endereco"
+              placeholder="Endereço"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <input type="text" name="cidade" placeholder="Cidade" required />
+          </div>
+
+          <div class="form-group">
+            <input type="text" name="estado" placeholder="Estado" required />
+          </div>
+
+          <div class="form-group">
+            <input type="text" name="cpf" placeholder="CPF" required />
+          </div>
+
+          <div class="form-group">
+            <input
+              type="date"
+              name="data_nascimento"
+              placeholder="Data de Nascimento"
+            />
+          </div>
+
+          <button type="submit">
+            <i class="fas fa-save"></i> Salvar Cliente
+          </button>
+        </form>
+      </section>
+    </div>
+  </body>
+</html>
