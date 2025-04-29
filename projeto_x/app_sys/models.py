@@ -17,7 +17,6 @@ class Produto(models.Model):
     quantidade = models.IntegerField()
     localizacao = models.CharField(max_length=100)
     data_validade = models.DateField(null=True, blank=True)
-    imagem = models.ImageField(upload_to="produtos/", null=True, blank=True)
 
     def __str__(self):
         return self.nome

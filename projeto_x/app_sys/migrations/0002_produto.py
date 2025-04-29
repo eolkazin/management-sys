@@ -34,10 +34,6 @@ class Migration(migrations.Migration):
                 ("quantidade", models.IntegerField()),
                 ("localizacao", models.CharField(max_length=100)),
                 ("data_validade", models.DateField(blank=True, null=True)),
-                (
-                    "imagem",
-                    models.ImageField(blank=True, null=True, upload_to="produtos/"),
-                ),
             ],
         ),
     ]

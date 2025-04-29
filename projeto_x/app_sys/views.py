@@ -88,7 +88,6 @@ def estoque_view(request):
         quantidade = request.POST.get("quantidade")
         localizacao = request.POST.get("localizacao")
         data_validade = request.POST.get("data_validade")
-        imagem = request.FILES.get("imagem")  # Upload de arquivo
 
         Produto.objects.create(
             nome=nome,
@@ -100,7 +99,6 @@ def estoque_view(request):
             quantidade=quantidade,
             localizacao=localizacao,
             data_validade=data_validade if data_validade else None,
-            imagem=imagem,
         )
         return redirect("estoque")  # Reload na página pra ver o novo produto
 

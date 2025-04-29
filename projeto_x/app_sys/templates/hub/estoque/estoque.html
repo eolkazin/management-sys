@@ -9,10 +9,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-    <link
-      rel="stylesheet"
-      href="{% static 'css/hub/estoque/estoque.css' %}?v=1"
-    />
+    <link rel="stylesheet" href="{% static 'css/hub/estoque/estoque.css' %}" />
   </head>
   <body>
     <!-- Sidebar -->
@@ -20,13 +17,7 @@
       <h2>Estoque</h2>
       <ul>
         <li>
-          <a href="#"><i class="fas fa-box"></i> Dashboard</a>
-        </li>
-        <li>
-          <a href="#"><i class="fas fa-cogs"></i> Configurações</a>
-        </li>
-        <li>
-          <a href="#"><i class="fas fa-truck"></i> Entradas</a>
+          <a href="#"><i class="fas fa-chart-bar"></i> Dashboard</a>
         </li>
         <li>
           <a href="#"><i class="fas fa-exchange-alt"></i> Saídas</a>
@@ -35,9 +26,6 @@
           <a href="{% url 'lista_produtos' %}"
             ><i class="fas fa-boxes"></i> Produtos</a
           >
-        </li>
-        <li>
-          <a href="#"><i class="fas fa-users"></i> Fornecedores</a>
         </li>
       </ul>
       <a href="{% url 'hub' %}" class="btn">
@@ -111,7 +99,6 @@
             name="data_validade"
             placeholder="Data de Validade"
           />
-          <input type="file" name="imagem" />
           <button type="submit">
             <i class="fas fa-save"></i> Salvar Produto
           </button>

@@ -1,17 +1,26 @@
-/* Estilos Globais */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #121212; /* Fundo escuro */
-  color: #e0e0e0; /* Texto claro */
+/* Reset */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos Globais */
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #2c3e50; /* Fundo suave de cinza escuro */
+  color: #ecf0f1; /* Texto claro */
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 /* Container do conteúdo principal */
 .container {
   width: 90%;
   margin: 30px auto;
-  background-color: #1e1e1e; /* Fundo escuro para o container */
+  background-color: #34495e; /* Fundo mais suave */
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -22,7 +31,7 @@ h1 {
   text-align: center;
   font-size: 2.5em;
   margin-bottom: 20px;
-  color: #e53935; /* Vermelho para destaque */
+  color: #e74c3c; /* Vermelho para destaque */
 }
 
 /* Tabela de produtos */
@@ -34,41 +43,42 @@ h1 {
 
 .product-table th,
 .product-table td {
-  padding: 12px;
+  padding: 14px;
   text-align: left;
-  border-bottom: 1px solid #333; /* Linha de separação escura */
+  border-bottom: 1px solid #3e5c6e; /* Linha de separação mais suave */
 }
 
 .product-table th {
-  background-color: #212121; /* Cabeçalho escuro */
-  color: #e0e0e0; /* Texto claro */
+  background-color: #2c3e50; /* Cabeçalho escuro e mais suave */
+  color: #ecf0f1; /* Texto claro */
   font-weight: bold;
 }
 
 .product-table tr:hover {
-  background-color: #e53935; /* Fundo vermelho ao passar o mouse */
+  background-color: #e74c3c; /* Fundo vermelho suave ao passar o mouse */
   color: white;
 }
 
 .product-table td {
-  font-size: 0.9em;
-  color: #e0e0e0;
+  font-size: 1rem;
+  color: #ecf0f1;
 }
 
 /* Estilo para botões de excluir */
 .btn-delete {
-  background-color: #e53935; /* Vermelho para o botão */
+  background-color: #e74c3c; /* Vermelho para o botão */
   color: white;
   padding: 6px 12px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 0.9em;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .btn-delete:hover {
-  background-color: #b71c1c; /* Tom mais escuro de vermelho ao passar o mouse */
+  background-color: #c0392b; /* Tom mais escuro de vermelho ao passar o mouse */
+  transform: translateY(-2px); /* Efeito de elevação */
 }
 
 /* Botões dentro da tabela */
@@ -80,40 +90,41 @@ h1 {
   transition: color 0.3s ease;
 }
 
+.product-table td button:hover {
+  color: #e74c3c; /* Cor do texto fica vermelha ao passar o mouse */
+}
+
 /* Botão para voltar ao Hub */
 .btn-back {
   display: inline-block;
   margin-bottom: 20px;
   padding: 10px 20px;
-  background-color: #e53935; /* Vermelho */
+  background-color: #e74c3c; /* Vermelho */
   color: white;
   font-size: 1em;
   text-decoration: none;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .btn-back:hover {
-  background-color: #b71c1c; /* Tom mais escuro de vermelho ao passar o mouse */
+  background-color: #c0392b; /* Tom mais escuro de vermelho ao passar o mouse */
+  transform: translateY(-3px); /* Efeito de elevação */
 }
 
 .btn-back i {
   margin-right: 8px;
 }
 
-.product-table td button:hover {
-  color: #e53935; /* Cor do texto fica vermelha ao passar o mouse */
-}
-
 /* Responsividade para telas pequenas */
 @media (max-width: 768px) {
   .product-table th,
   .product-table td {
-    font-size: 0.8em;
-    padding: 10px;
+    font-size: 0.9em;
+    padding: 12px;
   }
 
   .product-table td button {
-    font-size: 0.8em;
+    font-size: 0.9em;
   }
 }

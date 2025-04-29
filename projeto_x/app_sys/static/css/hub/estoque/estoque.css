@@ -8,27 +8,32 @@
 /* Base */
 body {
   font-family: "Roboto", sans-serif;
-  background-color: #121212;
-  color: #fff;
+  background-color: #2c3e50; /* Fundo mais suave, ainda escuro, mas não tão agressivo */
+  color: #ecf0f1; /* Texto claro para contraste */
   display: flex;
   height: 100vh;
   overflow: hidden;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 /* Sidebar */
 .sidebar {
   width: 250px;
-  background: #e74c3c;
-  padding: 20px;
+  background: #34495e; /* Tom suave de cinza azulado */
+  padding: 30px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  border-right: 2px solid #3e5c6e; /* Fronteira mais suave */
 }
 
 .sidebar h2 {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   margin-bottom: 30px;
   text-align: center;
+  color: #f39c12; /* Laranja para destaque, mas de forma moderada */
 }
 
 .sidebar ul {
@@ -40,124 +45,153 @@ body {
 }
 
 .sidebar ul li a {
-  color: #fff;
+  color: #ecf0f1;
   text-decoration: none;
   font-size: 1.1rem;
-  padding: 8px 12px;
+  padding: 12px 18px;
   display: block;
-  border-radius: 5px;
+  border-radius: 6px;
+  transition: background 0.3s ease, padding 0.2s ease;
 }
 
 .sidebar ul li a:hover {
-  background: #c0392b;
+  background: #e67e22; /* Laranja mais suave */
+  padding-left: 24px;
 }
 
 .sidebar .btn {
-  background: #c0392b;
+  background: #e74c3c;
   border: none;
-  padding: 12px 20px; /* Ajustei o padding para ter mais espaçamento nas laterais */
+  padding: 14px 24px;
   color: #fff;
-  font-size: 1rem;
-  border-radius: 5px;
-  text-decoration: none; /* Remove o underline padrão do link */
-  display: inline-block; /* Para o link se comportar como um botão */
-  text-align: center; /* Garantir que o texto fique centralizado */
+  font-size: 1.1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
   cursor: pointer;
-  transition: background 0.3s ease; /* Efeito de transição para o hover */
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .sidebar .btn:hover {
-  background: #d61b06; /* Cor do botão quando o usuário passar o mouse */
+  background: #c0392b;
+  transform: translateY(-3px);
 }
 
 /* Main Content */
 .main-content {
   flex: 1;
-  padding: 30px;
-  background: #1e1e1e;
+  padding: 50px;
+  background: #34495e; /* Fundo mais suave de cinza escuro */
   overflow-y: auto;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
 /* Header */
 header {
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 header h1 {
-  font-size: 2rem;
-  color: #e74c3c;
+  font-size: 2.2rem;
+  color: #f39c12;
+  letter-spacing: 1px;
 }
 
 /* Sections */
 .content-section {
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 .content-section h2 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  color: #e74c3c;
+  font-size: 1.9rem;
+  margin-bottom: 30px;
+  color: #f39c12;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .content-section form input,
 .content-section form textarea,
 .content-section form button {
   width: 100%;
-  margin-bottom: 15px;
-  padding: 12px;
-  border: 1px solid #333;
-  border-radius: 5px;
-  background: #222;
-  color: #fff;
+  margin-bottom: 20px;
+  padding: 14px;
+  border: 1px solid #444;
+  border-radius: 8px;
+  background: #2c3e50; /* Cor de fundo mais suave */
+  color: #ecf0f1;
   font-size: 1rem;
+  transition: border 0.3s ease, background 0.3s ease;
+}
+
+.content-section form input:focus,
+.content-section form textarea:focus {
+  border: 1px solid #e74c3c;
+  outline: none;
+  background: #34495e;
 }
 
 .content-section form button {
   background: #e74c3c;
   border: none;
   cursor: pointer;
+  font-size: 1.1rem;
+  padding: 14px 24px;
+  border-radius: 6px;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .content-section form button:hover {
   background: #c0392b;
+  transform: translateY(-3px);
 }
 
 /* Table */
 .stock-list table {
   width: 100%;
-  background: #222;
+  background: #2c3e50;
   border-collapse: collapse;
+  margin-top: 30px;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .stock-list th,
 .stock-list td {
-  padding: 12px;
-  border-bottom: 1px solid #333;
+  padding: 14px;
+  border-bottom: 1px solid #3e5c6e; /* Borda suave */
   text-align: left;
 }
 
 .stock-list th {
   background: #e74c3c;
   color: #fff;
+  font-size: 1.1rem;
 }
 
 .stock-list tr:hover {
-  background: #333;
+  background: #3e5c6e;
 }
 
 .btn-delete {
   background: #c0392b;
   border: none;
-  padding: 8px 16px;
+  padding: 10px 18px;
   color: #fff;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.3s ease;
 }
 
 .btn-delete:hover {
   background: #e74c3c;
+  transform: translateY(-2px);
 }
