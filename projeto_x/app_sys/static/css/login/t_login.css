@@ -1,3 +1,16 @@
+:root {
+  --fundo-principal: #121212;
+  --texto-primario: #d1d1d1;
+  --cabecalho-rodape: #1a1a1a;
+  --bordas-destaque: #333333;
+  --bordas-destaque2: #555555;
+  --fundo-menu: #1f1f1f;
+  --fundo-itens-menu: #2a2a2a;
+  --hover-itens-menu: #333333;
+  --texto-btn-logout: #d1d1d1;
+  --hover-btn-logout: #333333;
+}
+
 /* Reseta margens, paddings e configura a caixa de modelo */
 * {
   margin: 0;
@@ -8,12 +21,12 @@
 /* Estilos gerais do corpo da página */
 body {
   font-family: "Roboto", sans-serif;
-  background-color: #000000; /* Fundo preto */
+  background-color: var(--fundo-principal); /* Fundo principal */
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  color: #f5f5f5;
+  color: var(--texto-primario); /* Texto primário */
   overflow: hidden;
 }
 
@@ -48,7 +61,7 @@ h2 {
   margin-bottom: 30px;
   font-size: 32px;
   font-weight: 700;
-  color: #ff4747;
+  color: var(--texto-primario); /* Texto primário */
   letter-spacing: 1px;
   animation: fadeIn 1.5s ease-out;
 }
@@ -74,10 +87,10 @@ input {
   padding: 14px 20px;
   padding-left: 45px;
   margin: 12px 0;
-  border: 2px solid #333;
+  border: 2px solid var(--bordas-destaque); /* Bordas destaque */
   border-radius: 10px;
-  background-color: #222;
-  color: #f5f5f5;
+  background-color: var(--cabecalho-rodape); /* Cor de fundo do input */
+  color: var(--texto-primario); /* Texto primário */
   font-size: 16px;
   transition: all 0.3s ease;
 }
@@ -85,27 +98,27 @@ input {
 /* Efeito de foco nos campos de entrada */
 input:focus {
   outline: none;
-  border-color: #ff4747;
-  background-color: #333;
-  color: #ff4747;
+  border-color: var(--bordas-destaque2); /* Bordas destaque 2 */
+  background-color: var(--bordas-destaque); /* Fundo alterado no foco */
+  color: var(--texto-primario); /* Texto primário */
   transform: translateY(-3px);
 }
 
 /* Ícone dentro do input */
 input::placeholder {
-  color: #888;
+  color: var(--bordas-destaque);
 }
 
 input:focus::placeholder {
-  color: #ff4747;
+  color: var(--bordas-destaque2);
 }
 
 /* Estilos do botão */
 button {
   width: 100%;
   padding: 15px;
-  background-color: #ff4747;
-  color: white;
+  background-color: var(--bordas-destaque2); /* Fundo do botão */
+  color: var(--texto-primario); /* Texto primário */
   border: none;
   border-radius: 10px;
   font-size: 18px;
@@ -117,7 +130,9 @@ button {
 
 /* Efeito no botão ao passar o mouse */
 button:hover {
-  background-color: #cc0000;
+  background-color: var(
+    --hover-btn-logout
+  ); /* Cor de fundo do botão ao passar o mouse */
   transform: translateY(-5px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
@@ -129,7 +144,7 @@ p {
 
 /* Estilos do link */
 a {
-  color: #ff4747;
+  color: var(--bordas-destaque2); /* Cor do link */
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease, text-decoration 0.3s ease;
@@ -138,7 +153,7 @@ a {
 
 /* Efeito no link ao passar o mouse */
 a:hover {
-  color: #cc0000;
+  color: var(--hover-btn-logout); /* Cor do link ao passar o mouse */
   text-decoration: underline;
 }
 
@@ -160,17 +175,4 @@ a:hover {
     transform: scale(1);
     opacity: 1;
   }
-}
-
-/* Estilos de cores para alertas */
-.alert-success {
-  background-color: #28a745;
-}
-
-.alert-warning {
-  background-color: #ffc107;
-}
-
-.alert-danger {
-  background-color: #ff4747;
 }

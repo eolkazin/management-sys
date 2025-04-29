@@ -101,9 +101,8 @@ def estoque_view(request):
             data_validade=data_validade if data_validade else None,
         )
         return redirect("estoque")  # Reload na página pra ver o novo produto
-
     produtos = Produto.objects.all()
-    return render(request, "hub/estoque/estoque.html", {"produtos": produtos})
+    return render(request, "estoque/estoque.html", {"produtos": produtos})
 
 
 def deletar_produto(request, produto_id):
@@ -115,4 +114,4 @@ def deletar_produto(request, produto_id):
 
 def lista_produtos_view(request):
     produtos = Produto.objects.all()  # Pega todos os produtos
-    return render(request, "hub/estoque/lista_produtos.html", {"produtos": produtos})
+    return render(request, "estoque/lista_produtos.html", {"produtos": produtos})
