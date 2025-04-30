@@ -5,7 +5,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard Empresarial</title>
+    <title>Dashboard de Estoque</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
@@ -18,199 +18,218 @@
     <link rel="stylesheet" href="{% static 'css/dashboard/dashboard.css' %}" />
   </head>
   <body>
-    <h1><i class="fas fa-chart-pie"></i> Dashboard</h1>
+    <h1><i class="fas fa-warehouse"></i> Dashboard de Estoque</h1>
 
     <div class="filters">
       <select>
-        <option>Filtrar por mês</option>
-        <option>Janeiro</option>
-        <option>Fevereiro</option>
-        <option>Março</option>
+        <option>Filtrar por categoria</option>
+        <option>Alimentos</option>
+        <option>Bebidas</option>
+        <option>Limpeza</option>
       </select>
-      <button onclick="alert('Exportando relatório...')">
-        <i class="fas fa-share-square"></i> Exportar Relatório
+      <button onclick="alert('Exportando inventário...')">
+        <i class="fas fa-download"></i> Exportar Inventário
       </button>
     </div>
 
     <div class="dashboard">
       <div class="card">
-        <h2>R$ {{ receita|floatformat:2 }}</h2>
-        <p>Receita</p>
-        <p class="growth up"><i class="fas fa-arrow-up"></i> +12%</p>
+        <h2>{{ total_itens }}</h2>
+        <p>Total de Itens</p>
       </div>
       <div class="card">
-        <h2>R$ {{ despesas|floatformat:2 }}</h2>
-        <p>Despesas</p>
-        <p class="growth down"><i class="fas fa-arrow-down"></i> -5%</p>
+        <h2>{{ itens_criticos }}</h2>
+        <p>Itens Críticos</p>
+        <p class="growth down">
+          <i class="fas fa-exclamation-triangle"></i> Repor urgente
+        </p>
       </div>
       <div class="card">
-        <h2>{{ novos_clientes }}</h2>
-        <p>Novos Clientes</p>
-        <p class="growth up"><i class="fas fa-arrow-up"></i> +8%</p>
+        <h2>{{ movimentacoes_hoje }}</h2>
+        <p>Movimentações Hoje</p>
       </div>
       <div class="card">
-        <h2>{{ meta }}%</h2>
-        <p>Meta</p>
-        <p class="growth up"><i class="fas fa-arrow-up"></i> +10%</p>
+        <h2>{{ categorias_count }}</h2>
+        <p>Tipos de Produto</p>
       </div>
     </div>
 
     <div class="chart-grid">
+      <!-- Gráfico de Estoque por Categoria -->
       <div class="chart-container">
-        <h2><i class="fas fa-chart-line"></i> Gráfico de Receita</h2>
-        <canvas id="lineChart"></canvas>
+        <h2><i class="fas fa-chart-pie"></i> Estoque por Categoria</h2>
+        <canvas id="pieChart"></canvas>
       </div>
+
+      <!-- Gráfico de Entradas vs Saídas -->
       <div class="chart-container">
-        <h2><i class="fas fa-chart-bar"></i> Gráfico de Despesas</h2>
+        <h2><i class="fas fa-exchange-alt"></i> Entradas vs Saídas</h2>
         <canvas id="barChart"></canvas>
+      </div>
+
+      <!-- Gráfico de Quantidade de Itens por Status -->
+      <div class="chart-container">
+        <h2>
+          <i class="fas fa-clipboard-list"></i> Quantidade de Itens por Status
+        </h2>
+        <canvas id="statusChart"></canvas>
+      </div>
+
+      <!-- Gráfico de Movimentação de Estoque por Mês -->
+      <div class="chart-container">
+        <h2>
+          <i class="fas fa-calendar-alt"></i> Movimentação de Estoque por Mês
+        </h2>
+        <canvas id="lineChart"></canvas>
       </div>
     </div>
 
     <div class="notificacoes">
-      <h3><i class="fas fa-bell"></i> Notificações Recentes</h3>
+      <h3><i class="fas fa-bell"></i> Alertas de Estoque</h3>
       <ul>
+        {% for item in itens_alerta %}
         <li>
-          <i class="fas fa-circle"></i> Novo cliente cadastrado: {{
-          clientes.first.name }}
+          <i class="fas fa-exclamation-circle"></i> {{ item.nome }} abaixo do
+          mínimo ({{ item.quantidade }})
         </li>
+        {% empty %}
         <li>
-          <i class="fas fa-circle-notch"></i> Relatório de vendas disponível
+          <i class="fas fa-check-circle"></i> Todos os estoques estão em ordem
         </li>
-        <li>
-          <i class="fas fa-exclamation-circle"></i> Ação necessária: Pagamento
-          pendente de cliente X
-        </li>
+        {% endfor %}
       </ul>
     </div>
 
     <div class="table-container">
-      <h3>Status de Pagamentos</h3>
+      <h3>Itens em Estoque</h3>
       <table>
         <thead>
           <tr>
-            <th>Cliente</th>
-            <th>Valor</th>
+            <th>Produto</th>
+            <th>Categoria</th>
+            <th>Quantidade</th>
             <th>Status</th>
           </tr>
         </thead>
         <tbody>
-          {% for cliente in clientes %}
+          {% for produto in produtos %}
           <tr>
-            <td>{{ cliente.nome }}</td>
-            <td>R$ {{ cliente.valor }}</td>
+            <td>{{ produto.nome }}</td>
+            <td>{{ produto.categoria }}</td>
+            <td>{{ produto.quantidade }}</td>
             <td>
-              <span class="status {{ cliente.status }}"
-                >{{ cliente.status }}</span
+              <span
+                class="status {% if produto.quantidade < produto.estoque_minimo %}baixo{% else %}ok{% endif %}"
               >
+                {% if produto.quantidade < produto.estoque_minimo %}Crítico{%
+                else %}OK{% endif %}
+              </span>
             </td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
     </div>
+
     <a href="{% url 'estoque' %}">
-      <button><i class="fas fa-warehouse"></i> Voltar para o Estoque</button>
+      <button><i class="fas fa-arrow-left"></i> Voltar</button>
     </a>
 
     <script>
-      // Dados para o gráfico de Receita (exemplo)
-      const receitaData = {
-        labels: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun"], // Meses
+      // Dados fictícios para o gráfico de estoque por categoria
+      const pieData = {
+        labels: ["Alimentos", "Bebidas", "Limpeza", "Higiene"],
         datasets: [
           {
-            label: "Receita",
-            data: [10000, 12000, 14000, 16000, 18000, 20000], // Receita de cada mês (valores fictícios)
-            borderColor: "rgba(75, 192, 192, 1)",
-            backgroundColor: "rgba(75, 192, 192, 0.2)",
-            fill: true,
-            tension: 0.4,
+            label: "Quantidade",
+            data: [120, 90, 60, 30],
+            backgroundColor: ["#4caf50", "#2196f3", "#ff9800", "#f44336"],
           },
         ],
       };
 
-      const despesaData = {
-        labels: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun"], // Meses
-        datasets: [
-          {
-            label: "Despesas",
-            data: [8000, 9000, 10000, 9500, 11000, 10500], // Despesas de cada mês (valores fictícios)
-            borderColor: "rgba(255, 99, 132, 1)",
-            backgroundColor: "rgba(255, 99, 132, 0.2)",
-            fill: true,
-            tension: 0.4,
-          },
-        ],
-      };
-
-      // Configuração do gráfico de linha para Receita
-      const lineChartConfig = {
-        type: "line",
-        data: receitaData,
+      const pieChartConfig = {
+        type: "pie",
+        data: pieData,
         options: {
           responsive: true,
-          plugins: {
-            legend: {
-              position: "top",
-            },
-            tooltip: {
-              mode: "index",
-              intersect: false,
-            },
-          },
-          scales: {
-            x: {
-              title: {
-                display: true,
-                text: "Meses",
-              },
-            },
-            y: {
-              title: {
-                display: true,
-                text: "Valor (R$)",
-              },
-              beginAtZero: true,
-            },
-          },
         },
       };
 
-      // Configuração do gráfico de barras para Despesas
+      // Gráfico de Entradas vs Saídas
+      const barData = {
+        labels: ["Seg", "Ter", "Qua", "Qui", "Sex"],
+        datasets: [
+          {
+            label: "Entradas",
+            data: [30, 40, 50, 45, 60],
+            backgroundColor: "#4caf50",
+          },
+          {
+            label: "Saídas",
+            data: [20, 35, 30, 50, 55],
+            backgroundColor: "#f44336",
+          },
+        ],
+      };
+
       const barChartConfig = {
         type: "bar",
-        data: despesaData,
+        data: barData,
         options: {
           responsive: true,
-          plugins: {
-            legend: {
-              position: "top",
-            },
-            tooltip: {
-              mode: "index",
-              intersect: false,
-            },
-          },
-          scales: {
-            x: {
-              title: {
-                display: true,
-                text: "Meses",
-              },
-            },
-            y: {
-              title: {
-                display: true,
-                text: "Valor (R$)",
-              },
-              beginAtZero: true,
-            },
-          },
+          plugins: { legend: { position: "top" } },
+          scales: { y: { beginAtZero: true } },
         },
       };
 
-      // Inicializando os gráficos
-      new Chart(document.getElementById("lineChart"), lineChartConfig);
+      // Gráfico de Quantidade de Itens por Status
+      const statusData = {
+        labels: ["Estoque OK", "Estoque Crítico"],
+        datasets: [
+          {
+            label: "Quantidade de Itens",
+            data: [80, 20], // Dados fictícios
+            backgroundColor: ["#4caf50", "#f44336"],
+          },
+        ],
+      };
+
+      const statusChartConfig = {
+        type: "doughnut",
+        data: statusData,
+        options: {
+          responsive: true,
+        },
+      };
+
+      // Gráfico de Movimentação de Estoque por Mês
+      const lineData = {
+        labels: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun"],
+        datasets: [
+          {
+            label: "Movimentação",
+            data: [100, 150, 120, 170, 180, 200], // Dados fictícios
+            borderColor: "#ff5722",
+            backgroundColor: "rgba(255, 87, 34, 0.2)",
+            fill: true,
+          },
+        ],
+      };
+
+      const lineChartConfig = {
+        type: "line",
+        data: lineData,
+        options: {
+          responsive: true,
+          scales: { y: { beginAtZero: true } },
+        },
+      };
+
+      new Chart(document.getElementById("pieChart"), pieChartConfig);
       new Chart(document.getElementById("barChart"), barChartConfig);
+      new Chart(document.getElementById("statusChart"), statusChartConfig);
+      new Chart(document.getElementById("lineChart"), lineChartConfig);
     </script>
   </body>
 </html>

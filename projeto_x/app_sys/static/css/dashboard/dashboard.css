@@ -58,7 +58,7 @@ button {
 select:hover,
 button:hover {
   background-color: var(--hover-itens-menu);
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.05);
 }
 
 button {
@@ -89,7 +89,7 @@ button:hover {
 }
 
 .card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-10px) scale(1.05);
   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -115,22 +115,21 @@ button:hover {
   display: flex;
   gap: 30px;
   margin: 30px 0;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
-.chart-container {
+.chart-container,
+.notificacoes,
+.table-container {
   background-color: var(--cabecalho-rodape);
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-  flex: 1;
 }
 
 .notificacoes {
-  background-color: var(--cabecalho-rodape);
-  padding: 30px;
-  border-radius: 12px;
   margin: 30px 0;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
 .notificacoes h3 {
@@ -146,14 +145,6 @@ button:hover {
 .notificacoes ul li {
   font-size: 1.2rem;
   margin-bottom: 10px;
-}
-
-.table-container {
-  padding: 30px;
-  background-color: var(--cabecalho-rodape);
-  border-radius: 12px;
-  margin-bottom: 30px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
 table {
