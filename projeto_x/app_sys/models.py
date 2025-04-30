@@ -1,46 +1,51 @@
 from django.db import models
 
 
-### Modelo de usuário com campos de username e password ###
+### modelo de usuário ###
 class Usuario(models.Model):
-    username = models.CharField(max_length=150, unique=True)  # Nome de usuário único
-    password = models.CharField(max_length=128)  # Senha do usuário
+    username = models.CharField(
+        max_length=150, unique=True
+    )  # ### nome de usuário único ###
+    password = models.CharField(max_length=128)  # ### senha hash do usuário ###
+
+    def __str__(self):
+        return self.username
 
 
-### Modelo de produto com diversos campos de informações do produto ###
+### modelo de produto ###
 class Produto(models.Model):
-    nome = models.CharField(max_length=255)  # Nome do produto
-    descricao = models.TextField()  # Descrição do produto
-    categoria = models.CharField(max_length=100)  # Categoria do produto
-    fornecedor = models.CharField(max_length=100)  # Fornecedor do produto
+    nome = models.CharField(max_length=255)  # ### nome do produto ###
+    descricao = models.TextField()  # ### descrição detalhada ###
+    categoria = models.CharField(max_length=100)  # ### tipo/categoria ###
+    fornecedor = models.CharField(max_length=100)  # ### nome do fornecedor ###
     custo_unitario = models.DecimalField(
         max_digits=10, decimal_places=2
-    )  # Custo unitário do produto
+    )  # ### custo por unidade ###
     preco_venda = models.DecimalField(
         max_digits=10, decimal_places=2
-    )  # Preço de venda do produto
-    quantidade = models.IntegerField()  # Quantidade do produto em estoque
-    localizacao = models.CharField(max_length=100)  # Localização no estoque
+    )  # ### preço de venda ###
+    quantidade = models.IntegerField()  # ### estoque atual ###
+    localizacao = models.CharField(max_length=100)  # ### onde tá no estoque ###
     data_validade = models.DateField(
         null=True, blank=True
-    )  # Data de validade do produto (opcional)
+    )  # ### validade (opcional) ###
 
     def __str__(self):
         return self.nome
 
 
-### Modelo de cliente com dados pessoais e de contato ###
+### modelo de cliente ###
 class Cliente(models.Model):
-    nome = models.CharField(max_length=255)  # Nome do cliente
-    email = models.EmailField()  # Email do cliente
-    telefone = models.CharField(max_length=20)  # Telefone do cliente
-    endereco = models.CharField(max_length=255)  # Endereço do cliente
-    cidade = models.CharField(max_length=100)  # Cidade do cliente
-    estado = models.CharField(max_length=50)  # Estado do cliente
-    cpf = models.CharField(max_length=14, unique=True)  # CPF único do cliente
+    nome = models.CharField(max_length=255)  # ### nome completo ###
+    email = models.EmailField()  # ### e-mail ###
+    telefone = models.CharField(max_length=20)  # ### número de contato ###
+    endereco = models.CharField(max_length=255)  # ### endereço completo ###
+    cidade = models.CharField(max_length=100)  # ### cidade ###
+    estado = models.CharField(max_length=50)  # ### estado ###
+    cpf = models.CharField(max_length=14, unique=True)  # ### CPF (único) ###
     data_nascimento = models.DateField(
         null=True, blank=True
-    )  # Data de nascimento do cliente (opcional)
+    )  # ### nascimento (opcional) ###
 
     def __str__(self):
         return self.nome

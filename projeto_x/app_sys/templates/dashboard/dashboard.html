@@ -1,0 +1,216 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Empresarial</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="{% static 'css/dashboard/dashboard.css' %}" />
+  </head>
+  <body>
+    <h1><i class="fas fa-chart-pie"></i> Dashboard</h1>
+
+    <div class="filters">
+      <select>
+        <option>Filtrar por mês</option>
+        <option>Janeiro</option>
+        <option>Fevereiro</option>
+        <option>Março</option>
+      </select>
+      <button onclick="alert('Exportando relatório...')">
+        <i class="fas fa-share-square"></i> Exportar Relatório
+      </button>
+    </div>
+
+    <div class="dashboard">
+      <div class="card">
+        <h2>R$ {{ receita|floatformat:2 }}</h2>
+        <p>Receita</p>
+        <p class="growth up"><i class="fas fa-arrow-up"></i> +12%</p>
+      </div>
+      <div class="card">
+        <h2>R$ {{ despesas|floatformat:2 }}</h2>
+        <p>Despesas</p>
+        <p class="growth down"><i class="fas fa-arrow-down"></i> -5%</p>
+      </div>
+      <div class="card">
+        <h2>{{ novos_clientes }}</h2>
+        <p>Novos Clientes</p>
+        <p class="growth up"><i class="fas fa-arrow-up"></i> +8%</p>
+      </div>
+      <div class="card">
+        <h2>{{ meta }}%</h2>
+        <p>Meta</p>
+        <p class="growth up"><i class="fas fa-arrow-up"></i> +10%</p>
+      </div>
+    </div>
+
+    <div class="chart-grid">
+      <div class="chart-container">
+        <h2><i class="fas fa-chart-line"></i> Gráfico de Receita</h2>
+        <canvas id="lineChart"></canvas>
+      </div>
+      <div class="chart-container">
+        <h2><i class="fas fa-chart-bar"></i> Gráfico de Despesas</h2>
+        <canvas id="barChart"></canvas>
+      </div>
+    </div>
+
+    <div class="notificacoes">
+      <h3><i class="fas fa-bell"></i> Notificações Recentes</h3>
+      <ul>
+        <li>
+          <i class="fas fa-circle"></i> Novo cliente cadastrado: {{
+          clientes.first.name }}
+        </li>
+        <li>
+          <i class="fas fa-circle-notch"></i> Relatório de vendas disponível
+        </li>
+        <li>
+          <i class="fas fa-exclamation-circle"></i> Ação necessária: Pagamento
+          pendente de cliente X
+        </li>
+      </ul>
+    </div>
+
+    <div class="table-container">
+      <h3>Status de Pagamentos</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Valor</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for cliente in clientes %}
+          <tr>
+            <td>{{ cliente.nome }}</td>
+            <td>R$ {{ cliente.valor }}</td>
+            <td>
+              <span class="status {{ cliente.status }}"
+                >{{ cliente.status }}</span
+              >
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <a href="{% url 'estoque' %}">
+      <button><i class="fas fa-warehouse"></i> Voltar para o Estoque</button>
+    </a>
+
+    <script>
+      // Dados para o gráfico de Receita (exemplo)
+      const receitaData = {
+        labels: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun"], // Meses
+        datasets: [
+          {
+            label: "Receita",
+            data: [10000, 12000, 14000, 16000, 18000, 20000], // Receita de cada mês (valores fictícios)
+            borderColor: "rgba(75, 192, 192, 1)",
+            backgroundColor: "rgba(75, 192, 192, 0.2)",
+            fill: true,
+            tension: 0.4,
+          },
+        ],
+      };
+
+      const despesaData = {
+        labels: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun"], // Meses
+        datasets: [
+          {
+            label: "Despesas",
+            data: [8000, 9000, 10000, 9500, 11000, 10500], // Despesas de cada mês (valores fictícios)
+            borderColor: "rgba(255, 99, 132, 1)",
+            backgroundColor: "rgba(255, 99, 132, 0.2)",
+            fill: true,
+            tension: 0.4,
+          },
+        ],
+      };
+
+      // Configuração do gráfico de linha para Receita
+      const lineChartConfig = {
+        type: "line",
+        data: receitaData,
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: "top",
+            },
+            tooltip: {
+              mode: "index",
+              intersect: false,
+            },
+          },
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: "Meses",
+              },
+            },
+            y: {
+              title: {
+                display: true,
+                text: "Valor (R$)",
+              },
+              beginAtZero: true,
+            },
+          },
+        },
+      };
+
+      // Configuração do gráfico de barras para Despesas
+      const barChartConfig = {
+        type: "bar",
+        data: despesaData,
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: "top",
+            },
+            tooltip: {
+              mode: "index",
+              intersect: false,
+            },
+          },
+          scales: {
+            x: {
+              title: {
+                display: true,
+                text: "Meses",
+              },
+            },
+            y: {
+              title: {
+                display: true,
+                text: "Valor (R$)",
+              },
+              beginAtZero: true,
+            },
+          },
+        },
+      };
+
+      // Inicializando os gráficos
+      new Chart(document.getElementById("lineChart"), lineChartConfig);
+      new Chart(document.getElementById("barChart"), barChartConfig);
+    </script>
+  </body>
+</html>

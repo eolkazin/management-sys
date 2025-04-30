@@ -1,27 +1,34 @@
 from django.urls import path
 from app_sys import views
 
-# Define as rotas de URL
 urlpatterns = [
-    path("", views.login_view, name="login"),  # Página de login
-    path("cadastro/", views.cadastro_view, name="cadastro"),  # Página de cadastro
-    path("hub/", views.hub_view, name="hub"),  # Página do hub, após login
+    ### login e autenticação ###
+    path("", views.login_view, name="login"),  # ### exibe tela de login ###
+    path("cadastro/", views.cadastro_view, name="cadastro"),  # ### tela de cadastro ###
+    path("logout/", views.logout_view, name="logout"),  # ### encerra sessão ###
+    ### pós-login / hub ###
+    path("hub/", views.hub_view, name="hub"),  # ### dashboard inicial após login ###
+    ### dashboard geral ###
     path(
-        "logout/", views.logout_view, name="logout"
-    ),  # Desconecta o usuário e redireciona para login
-    path("estoque/", views.estoque_view, name="estoque"),  # Página de estoque
+        "dashboard/", views.dashboard_view, name="dashboard"
+    ),  # ### visão geral dos dados ###
+    ### estoque ###
+    path(
+        "estoque/", views.estoque_view, name="estoque"
+    ),  # ### cadastro e listagem de produtos ###
     path(
         "estoque/deletar/<int:produto_id>/",
         views.deletar_produto,
         name="deletar_produto",
-    ),  # Deleta um produto do estoque
+    ),  # ### deleta produto do estoque ###
     path(
         "produtos/", views.lista_produtos_view, name="lista_produtos"
-    ),  # Lista todos os produtos
+    ),  # ### lista todos os produtos ###
+    ### clientes ###
     path(
         "cad_cliente/", views.cad_cliente_view, name="cad_cliente"
-    ),  # Página de cadastro de cliente
+    ),  # ### cadastro de cliente ###
     path(
         "lista_cliente/", views.lista_clientes_view, name="lista_cliente"
-    ),  # Lista todos os clientes
+    ),  # ### lista todos os clientes ###
 ]
