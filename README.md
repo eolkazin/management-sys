@@ -1,4 +1,4 @@
-# 🚀 [Nome do Seu Sistema de Gestão - Seja Criativo!] 🚀
+# 🚀 [SYSPRO] 🚀
 
 [![Python](https://img.shields.io/badge/Python-3.x-blue.svg?style=flat-square)](https://www.python.org/)
 [![Django](https://img.shields.io/badge/Django-%23092E20.svg?style=flat-square&logo=django&logoColor=white)](https://www.djangoproject.com/)
