@@ -63,7 +63,7 @@ def logout_view(request):
     return redirect("login")
 
 
-### Estoque - Cadastro de Produto ###
+### Estoque - Cadastro de Produtos ###
 def estoque_view(request):
     if request.method == "POST":
         campos = [
